@@ -1,1 +1,45 @@
-body { padding-top:30px; }
+body { 
+	padding-top:30px; 
+	font-family: 'Abel';
+}
+ #map { 
+ 	height: 600px;
+ 	width: 100%; 
+ }
+ h1{
+ 	margin-top: 0px;
+ 	margin-bottom: 0px;
+ 	font-weight: 900;
+ 	font-size: 60px;
+ }
+ h5{
+ 	font-weight: 900;
+ 	background-color: #ffff80;
+ 	width: inherit;
+ 	padding-top: 4px;
+ 	padding-bottom: 4px;
+ 	padding-left: 4px;
+ }
+ h4{
+ 	font-size: 30px;
+ }
+ #cityName{
+ 	font-size: 24px;
+ 	font-family: 'Source Code Pro';
+ 	width: 200px;
+ 	margin-top: 30px;
+ 	margin-bottom: 30px;
+ }
+ #cityMission{
+ 	font-family: 'Source Code Pro';
+ 	font-size: 14px;
+ 	line-height: 24px;
+ 	margin-bottom: 25px;
+ }
+ .logo-container{
+ 	margin-top: 25px;
+ 	margin-bottom: 25px;
+ }
+ .underLine{
+ 	text-decoration: underline !important;
+ }

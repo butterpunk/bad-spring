@@ -1,18 +1,27 @@
-<div class="side-bar col-xs-12 col-sm-4">
-	<h5>Updated August 15, 2016</h5>
-	<h1>BAD</h1>
-	<h1>CITY</h1>
-	<h4>World's Worst Travel Guide</h4>
-	<h5>New Orleans</h5>
-	<h6>City Mission Explore New Orleans as we do. Drink much, eat weird, and fuck all</h6>
-	<div class="gif-container" >
-		<img class="img-responsive" src="http://az616578.vo.msecnd.net/files/2016/03/08/6359305555504029971141038659_big-freedia-208-venice-parade-oh-yass-gif.gif"/>
-	</div>
-</div>	
-<div class="col-xs-12 col-sm-6">
-	<div class="dare-container" ng-repeat="dare in dares">
-		<div class="row">	
-			<h6>{{dare.place}} {{dare.description}} {{dare.points}}</h6>
+<div class="row">
+	<div class="side-bar col-xs-12 col-sm-4">
+		<h5>{{date}}</h5>
+		<div class="logo-container">
+			<h1>BAD</h1>
+			<h1>CITY</h1>
+		</div>
+		<h4>World's Worst Travel Guide</h4>
+		<h5 id="cityName">New Orleans</h5>
+		<h6 id="cityMission"><span class="underLine">City Mission</span>: Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
+		<div class="gif-container" >
+			<img class="img-responsive" src="http://az616578.vo.msecnd.net/files/2016/03/08/6359305555504029971141038659_big-freedia-208-venice-parade-oh-yass-gif.gif"/>
 		</div>
 	</div>	
+	<div class="col-xs-12 col-sm-6">
+		<div class="dare-container" ng-repeat="dare in dares">
+			<div class="row">	
+				<h6>{{dare.place}} {{dare.description}} {{dare.points}}</h6>
+			</div>
+		</div>	
+	</div>
 </div>
+<div class="row">
+  <div id="map"></div>
+</div>	
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5PIdkx0leUj4LLCnaRIbnEeEuN-BSwKE&callback=initMap"
+    async defer></script>

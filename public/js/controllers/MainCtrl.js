@@ -1,4 +1,16 @@
 angular.module('MainCtrl', []).controller('MainController', function($scope) {
+	document.addEventListener('DOMContentLoaded', function() {
+	   // your code here
+	      var map;
+	      function initMap() {
+	        map = new google.maps.Map(document.getElementById('map'), {
+	          center: {lat: -34.397, lng: 150.644},
+	          zoom: 8
+	        });
+	      }
+	}, false); 
+
+	$scope.date = 'August 19, 2016';
 
 	$scope.dares=[{
 		place: 'St. Charles, Uptown',
@@ -28,10 +40,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
 		place: 'Heavens Gate',
 		points: '100',
 		description: 'Go to a house show and bring dorritos'			
-	},
-
-
-
-	]
+	},]
 
 });
