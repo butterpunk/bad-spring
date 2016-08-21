@@ -59,3 +59,13 @@ body {
  .sub{
  	padding-left: 25px;
  }
+ /* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.side-bar{
+		margin-left: 0px;
+	}
+	.DARES{
+		margin-left: 15px;
+		margin-top: 25px;
+	}
+}

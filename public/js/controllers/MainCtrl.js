@@ -11,7 +11,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
 	}, false); 
 
 	$scope.date = 'August 19, 2016';
-
 	$scope.dares=[{
 		place: 'St. Charles, Uptown',
 		points: '75',
@@ -41,5 +40,11 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
 		points: '100',
 		description: 'Go to a house show and bring dorritos'			
 	},]
+
+	$scope.currentPage = 0;
+	$scope.pageSize = 4; 
+	$scope.numberOfPages = function(){
+		return Math.ceil($scope.dares.length/$scope.pageSize);
+	}
 
 });
