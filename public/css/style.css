@@ -23,6 +23,9 @@ body {
  h4{
  	font-size: 30px;
  }
+ .side-bar{
+ 	margin-left: 30px;
+ }
  #cityName{
  	font-size: 24px;
  	font-family: 'Source Code Pro';
@@ -42,4 +45,14 @@ body {
  }
  .underLine{
  	text-decoration: underline !important;
+ }
+ h6{
+  	font-family: 'Source Code Pro';
+ 	font-size: 14px;	
+ }
+ .DARES{
+ 	margin-left: 120px;
+ }
+ .individual-dare{
+ 	margin-bottom: 25px;
  }
