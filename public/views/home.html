@@ -14,10 +14,11 @@
 	</div>	
 	<div class="col-xs-12 col-sm-6 DARES">
 		<div class="dare-container" ng-repeat="dare in dares">
-			<div class="row individual-dare">	
-				<h6><span class="underLine">Location:</span> {{dare.place}}</h6>
-				<h6><span class="underLine">Challenge:</span> {{dare.description}}</h6>
-				<h6><span class="underLine">Points:</span> {{dare.points}}</h6>
+			<div class="row individual-dare">
+
+				<h6>{{$index + 1}}.             <span class="underLine">Location:</span> {{dare.place}}</h6>
+				<h6 class="sub"><span class="underLine">Challenge:</span> {{dare.description}}</h6>
+				<h6 class="sub"><span class="underLine">Points:</span> {{dare.points}}</h6>	
 			</div>
 		</div>	
 	</div>

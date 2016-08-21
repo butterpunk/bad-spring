@@ -51,8 +51,11 @@ body {
  	font-size: 14px;	
  }
  .DARES{
- 	margin-left: 120px;
+ 	margin-left: 110px;
  }
  .individual-dare{
  	margin-bottom: 25px;
+ }
+ .sub{
+ 	padding-left: 25px;
  }
