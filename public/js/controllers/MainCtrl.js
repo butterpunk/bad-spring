@@ -17,7 +17,131 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	//this controls the svg's size, if you don't set it, it is 0
 	//learned that the hard way.
   $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 14 };
-  $scope.options = {scrollwheel: false};
+  $scope.options = {
+  	scrollwheel: false, 
+  	//this is the styler
+  	//this example is from https://snazzymaps.com/style/73125/eletrolar
+  	//really straight forward styling
+  	//ref : 
+  	//      https://developers.google.com/maps/documentation/javascript/reference#MapTypeStyle
+  	//those are the three props for the styles array and just go nuts from there
+  	styles: [
+					    {
+					        "featureType": "all",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "color": "#eda803"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "all",
+					        "elementType": "labels.text.fill",
+					        "stylers": [
+					            {
+					                "gamma": 0.01
+					            },
+					            {
+					                "lightness": 20
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "all",
+					        "elementType": "labels.text.stroke",
+					        "stylers": [
+					            {
+					                "saturation": -31
+					            },
+					            {
+					                "lightness": -33
+					            },
+					            {
+					                "weight": 2
+					            },
+					            {
+					                "gamma": 0.8
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "all",
+					        "elementType": "labels.icon",
+					        "stylers": [
+					            {
+					                "visibility": "off"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "landscape",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "lightness": 30
+					            },
+					            {
+					                "saturation": 30
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "poi",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "saturation": 20
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "poi.park",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "lightness": 20
+					            },
+					            {
+					                "saturation": -20
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "road",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "lightness": 10
+					            },
+					            {
+					                "saturation": -30
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "road",
+					        "elementType": "geometry.stroke",
+					        "stylers": [
+					            {
+					                "saturation": 25
+					            },
+					            {
+					                "lightness": 25
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "water",
+					        "elementType": "all",
+					        "stylers": [
+					            {
+					                "lightness": -20
+					            }
+					        ]
+					    }
+					]
+  	};
 
   uiGmapGoogleMapApi.then(function(maps) {
   	console.log(maps);
