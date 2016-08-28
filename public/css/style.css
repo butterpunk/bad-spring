@@ -69,5 +69,16 @@ body {
 		margin-top: 25px;
 	}
 }
-
-.angular-google-map-container { height: 400px; }
+.angular-google-map-container { 
+	height: 300px; 
+}
+.customFooter{
+	height: 100px;
+	background-color: gray;
+	color: white;
+	font-family: 'Source Code Pro';
+}
+.customFooter p{
+	padding-top: 25px;
+	margin-left: 100px;
+}

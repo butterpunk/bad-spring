@@ -1,30 +1,33 @@
-<div class="row">
-	<div class="side-bar col-xs-12 col-sm-4">
-		<h5>{{date}}</h5>
-		<div class="logo-container">
-			<h1>BAD</h1>
-			<h1>CITY</h1>
-		</div>
-		
-		<h4>World's Worst Travel Guide</h4>
-		<h5 id="cityName">New Orleans</h5>
-		<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
-		<div class="gif-container" >
-			<img class="img-responsive" src="http://az616578.vo.msecnd.net/files/2016/03/08/6359305555504029971141038659_big-freedia-208-venice-parade-oh-yass-gif.gif"/>
-		</div>
-	</div>	
-	<div class="col-xs-12 col-sm-6 DARES">
-		<div class="dare-container" ng-repeat="dare in dares">
-			<div class="row individual-dare">
-
-				<h6>{{$index + 1}}.             <span class="underLine">Location:</span> {{dare.place}}</h6>
-				<h6 class="sub"><span class="underLine">Challenge:</span> {{dare.description}}</h6>
-				<h6 class="sub"><span class="underLine">Points:</span> {{dare.points}}</h6>	
+<div class="container">
+	<div class="row">
+		<div class="side-bar col-xs-12 col-sm-4">
+			<h5>{{date}}</h5>
+			<div class="logo-container">
+				<h1>BAD</h1>
+				<h1>CITY</h1>
+			</div>
+			
+			<h4>World's Worst Travel Guide</h4>
+			<h5 id="cityName">New Orleans</h5>
+			<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
+			<div class="gif-container" >
+				<img class="img-responsive" src="http://az616578.vo.msecnd.net/files/2016/03/08/6359305555504029971141038659_big-freedia-208-venice-parade-oh-yass-gif.gif"/>
 			</div>
 		</div>	
+		<div class="col-xs-12 col-sm-6 DARES">
+			<div class="dare-container" ng-repeat="dare in dares">
+				<div class="row individual-dare">
+
+					<h6>{{$index + 1}}.             <span class="underLine">Location:</span> {{dare.place}}</h6>
+					<h6 class="sub"><span class="underLine">Challenge:</span> {{dare.description}}</h6>
+					<h6 class="sub"><span class="underLine">Points:</span> {{dare.points}}</h6>	
+				</div>
+			</div>	
+		</div>
 	</div>
 </div>
-
 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
-
+<div class="customFooter">
+	<p>2016 Bad Spring Creative</p>
+</div>	
  
