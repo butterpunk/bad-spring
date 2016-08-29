@@ -16,7 +16,8 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	//***  .angular-google-map-container { height: 400px; } ***
 	//this controls the svg's size, if you don't set it, it is 0
 	//learned that the hard way.
-  $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 14 };
+  $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
+  $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: 'https://files.slack.com/files-pri/T149P6ABU-F266KGGVB/gold_bolt.png'} };
   $scope.options = {
   	scrollwheel: false, 
   	//this is the styler
@@ -85,10 +86,10 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 			    },
 			    {
 			        "featureType": "water",
-			        "stylers": [
-			            {
-			                "visibility": "off"
-			            }
+			        "stylers": [	        
+					{
+               			 "color": "#7A7AA5"
+            		}
 			        ]
 			    },
 			    {
@@ -139,121 +140,8 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 			            }
 			        ]
 			    } 				
-				/*{
-					        "featureType": "all",
-					        "elementType": "geometry",
-					        "stylers": [
-					            {
-					                "color": "#eda803"
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "all",
-					        "elementType": "labels.text.fill",
-					        "stylers": [
-					            {
-					                "gamma": 0.01
-					            },
-					            {
-					                "lightness": 20
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "all",
-					        "elementType": "labels.text.stroke",
-					        "stylers": [
-					            {
-					                "saturation": -31
-					            },
-					            {
-					                "lightness": -33
-					            },
-					            {
-					                "weight": 2
-					            },
-					            {
-					                "gamma": 0.8
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "all",
-					        "elementType": "labels.icon",
-					        "stylers": [
-					            {
-					                "visibility": "off"
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "landscape",
-					        "elementType": "geometry",
-					        "stylers": [
-					            {
-					                "lightness": 30
-					            },
-					            {
-					                "saturation": 30
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "poi",
-					        "elementType": "geometry",
-					        "stylers": [
-					            {
-					                "saturation": 20
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "poi.park",
-					        "elementType": "geometry",
-					        "stylers": [
-					            {
-					                "lightness": 20
-					            },
-					            {
-					                "saturation": -20
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "road",
-					        "elementType": "geometry",
-					        "stylers": [
-					            {
-					                "lightness": 10
-					            },
-					            {
-					                "saturation": -30
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "road",
-					        "elementType": "geometry.stroke",
-					        "stylers": [
-					            {
-					                "saturation": 25
-					            },
-					            {
-					                "lightness": 25
-					            }
-					        ]
-					    },
-					    {
-					        "featureType": "water",
-					        "elementType": "all",
-					        "stylers": [
-					            {
-					                "lightness": -20
-					            }
-					        ]
-					    } */
-					]
+
+			]
   	};
 
   uiGmapGoogleMapApi.then(function(maps) {
