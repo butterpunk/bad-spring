@@ -1,5 +1,8 @@
-body { 
-	padding-top:30px; 
+.purple-container{
+	background-color: #7A7AA5;
+	display: block;
+}
+body {  
 	font-family: 'Abel';
 }
  #map { 
@@ -51,7 +54,11 @@ body {
  	font-size: 14px;	
  }
  .DARES{
- 	margin-left: 110px;
+ 	width: 600px;
+ 	margin: auto;
+ }
+ .DARES h6{
+ 	font-size: 24px;
  }
  .individual-dare{
  	margin-bottom: 25px;
