@@ -5,7 +5,6 @@
 			<h1>BAD</h1>
 			<h1>CITY</h1>
 		</div>
-		
 		<h4>World's Worst Travel Guide</h4>
 		<h5 id="cityName">New Orleans</h5>
 	</div>		
@@ -16,14 +15,19 @@
 <div class="logo-tagline-container col-xs-12 col-sm-4">
 	<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
 </div>
-<div class="challenges row">	
+<div class="challenges row">
+	<h1>CHALLENGES</h1>	
 	<div class="DARES">
 		<div class="dare-container" ng-repeat="dare in dares">
 			<div class="row individual-dare">
-
-				<h6>{{$index + 1}}.             <span class="underLine">Location:</span> {{dare.place}}</h6>
-				<h6 class="sub"><span class="underLine">Challenge:</span> {{dare.description}}</h6>
-				<h6 class="sub"><span class="underLine">Points:</span> {{dare.points}}</h6>	
+				<div class="col-xs-2">
+					<h1>{{$index+1}}</h1>
+				</div>
+				<div class="col-xs-10">
+					<h6><span class="underLine">Location:</span> {{dare.place}}</h6>
+					<h6><span class="underLine">Challenge:</span> {{dare.description}}</h6>
+					<h6><span class="underLine">Points:</span> {{dare.points}}</h6>	
+				</div>
 			</div>
 		</div>	
 	</div>
