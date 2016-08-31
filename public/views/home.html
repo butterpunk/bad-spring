@@ -1,3 +1,13 @@
+<div class="navCustom">
+	<div class="col-xs-10">	
+		<h6>BAD</h6>
+		<h6>CITY</h6>
+	</div>
+	<div class="col-xs-2">
+		<h6>All Time</h6>
+		<h6>This Weekend</h6>
+	</div>	
+</div>	
 <div class="purple-container row">
 	<div class="logo-tagline-container col-xs-12 col-sm-4">
 		<h5>{{date}}</h5>
@@ -20,10 +30,10 @@
 	<div class="DARES">
 		<div class="dare-container" ng-repeat="dare in dares">
 			<div class="row individual-dare">
-				<div class="col-xs-2">
-					<h1>{{$index+1}}</h1>
+				<div class="col-xs-1">
+					<h1>{{$index+1}}.</h1>
 				</div>
-				<div class="col-xs-10">
+				<div class="col-xs-11">
 					<h6><span class="underLine">Location:</span> {{dare.place}}</h6>
 					<h6><span class="underLine">Challenge:</span> {{dare.description}}</h6>
 					<h6><span class="underLine">Points:</span> {{dare.points}}</h6>	

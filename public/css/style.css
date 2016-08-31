@@ -111,9 +111,25 @@ body {
 .challenges{
 	padding-top: 250px;
 }
+.navCustom{
+	position: fixed;
+}
 .challenges h1{
 	margin-bottom: 15px;
 	text-align: center;
 	font-size: 38px;
 	color: black;
+}
+.DARES h1{
+	margin-top: 19px;
+	font-size: 50px;
+	font-weight: 100;
+	font-family: 'Abel';
+}
+.navCustom{
+	border-top: solid;
+	border-bottom: solid; 
+	border-bottom-width: 1px;
+	border-bottom-color: gray;  
+	width: 100%;
 }
