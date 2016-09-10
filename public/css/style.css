@@ -134,14 +134,16 @@ body {
 	width: 100%;
 }
 .arrow-container{
-	width: 10px;
+	width: 15px;
 	display: block;
 	float: right;
+	margin-left: 8px;
+	margin-right: 8px;
 }
 .arrow-container img{
 	margin: auto;
 
 }
 .lightning-container{
-	width: 15px;
+	width: 20px;
 }
