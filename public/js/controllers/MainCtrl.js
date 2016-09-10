@@ -9,25 +9,13 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	    });
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi) {
-	$log.currentLevel = $log.LEVELS.debug;
-	
-	//example using bachannal's coords
-	//in style.css
-	//***  .angular-google-map-container { height: 400px; } ***
-	//this controls the svg's size, if you don't set it, it is 0
-	//learned that the hard way.
+  $scope.points = 100;
+  $log.currentLevel = $log.LEVELS.debug;
   $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
   $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: 'https://files.slack.com/files-pri/T149P6ABU-F266KGGVB/gold_bolt.png'} };
   $scope.options = {
   	scrollwheel: false, 
-  	//this is the styler
-  	//this example is from https://snazzymaps.com/style/73125/eletrolar
-  	//really straight forward styling
-  	//ref : 
-  	//      https://developers.google.com/maps/documentation/javascript/reference#MapTypeStyle
-  	//those are the three props for the styles array and just go nuts from there
-  	styles: [
-			     {
+	styles: [   {
 			        "featureType": "road",
 			        "elementType": "labels",
 			        "stylers": [
@@ -151,31 +139,31 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	$scope.date = 'August 19, 2016';
 	$scope.dares=[{
 		place: 'St. Charles, Uptown',
-		points: '75',
+		points: 75,
 		description: 'take a walk down st. charles at night with a bottle of wine.'
 	},{
 		place: 'Frenchman Street',
-		points: '100',
+		points: 100,
 		description: 'Make out with 3 people in one night on frenchman St.'
 	},{
 		place: 'Bacchanal',
-		points: '100',
+		points: 100,
 		description: 'Smoke a joint in Bacchanal'		
 	},{
 		place: 'Apple Barrel',
-		points: '100',
+		points: 100,
 		description: 'Take A Shot with Morgan, the bartender'			
 	},{
 		place: 'The Country Club',
-		points: '100',
+		points: 100,
 		description: 'Go to the drag brunch and tip the queens'			
 	},{
 		place: 'Chickie Wah Wah',
-		points: '100',
+		points: 100,
 		description: 'See Alexis and the Samauri monday residential'			
 	},{
 		place: 'Heavens Gate',
-		points: '100',
+		points: 100,
 		description: 'Go to a house show and bring dorritos'			
 	},]
 
@@ -184,5 +172,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	$scope.numberOfPages = function(){
 		return Math.ceil($scope.dares.length/$scope.pageSize);
 	}
+	$scope.upVote = function(arg){
+		$scope.points = $scope.points - 25; 
+		$scope.dares[arg].points = $scope.dares[arg].points + 25;  
 
+	}
 });
