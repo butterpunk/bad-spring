@@ -193,13 +193,21 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		return Math.ceil($scope.dares.length/$scope.pageSize);
 	}
 	$scope.upVote = function(arg){
-		$scope.points = $scope.points - 25; 
-		$scope.dares[arg].points = $scope.dares[arg].points + 25;  
+		if($scope.points - 25 >= 0){
+			$scope.points = $scope.points - 25; 
+			$scope.dares[arg].points = $scope.dares[arg].points + 25;
+		}else{
+			console.log('bong');
+		}  
 
 	}
 	$scope.downVote = function(arg){
-		$scope.points = $scope.points - 25; 
-		$scope.dares[arg].points = $scope.dares[arg].points - 25;  
+		if($scope.points - 25 >= 0){
+			$scope.points = $scope.points - 25; 
+			$scope.dares[arg].points = $scope.dares[arg].points - 25; 
+		}else{
+			console.log('bong');
+		} 
 
 	}	
 });
