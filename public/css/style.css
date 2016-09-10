@@ -133,3 +133,15 @@ body {
 	border-bottom-color: gray;  
 	width: 100%;
 }
+.arrow-container{
+	width: 10px;
+	display: block;
+	float: right;
+}
+.arrow-container img{
+	margin: auto;
+
+}
+.lightning-container{
+	width: 15px;
+}

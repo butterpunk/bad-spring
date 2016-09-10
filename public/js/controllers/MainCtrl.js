@@ -177,4 +177,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		$scope.dares[arg].points = $scope.dares[arg].points + 25;  
 
 	}
+	$scope.downVote = function(arg){
+		$scope.points = $scope.points - 25; 
+		$scope.dares[arg].points = $scope.dares[arg].points - 25;  
+
+	}	
 });
