@@ -55,8 +55,12 @@
 	</div>
 </div>		
 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
-        <ui-gmap-marker coords="marker.coords" options="marker.options" idkey="marker.id">
-        </ui-gmap-marker>
+        <ui-gmap-marker 
+        	ng-repeat="mark in marker"
+        	coords="mark.coords" 
+        	options="mark.options" 
+        	idkey="mark.id">
+        </ui-gmap-marker>    
 <!--         <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
         </ui-gmap-marker>    -->     
 </ui-gmap-google-map>

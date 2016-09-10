@@ -12,7 +12,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
   $scope.points = 100;
   $log.currentLevel = $log.LEVELS.debug;
   $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
-  $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: 'https://files.slack.com/files-pri/T149P6ABU-F266KGGVB/gold_bolt.png'} };
+  // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   $scope.options = {
   	scrollwheel: false, 
 	styles: [   {
@@ -132,9 +132,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 			]
   	};
 
-  uiGmapGoogleMapApi.then(function(maps) {
-  	console.log(maps);
-  });
+ 
 
 	$scope.date = 'August 19, 2016';
 	$scope.dares=[{
@@ -181,7 +179,14 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		lat: 29.948919,
 		long: -90.117925					
 	},]
-
+	$scope.marker= [];
+	angular.forEach($scope.dares,function(value,key){
+		$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+	});
+	console.log($scope.marker);
+	 uiGmapGoogleMapApi.then(function(marker) {
+	  	console.log(marker);
+	  });	
 	$scope.currentPage = 0;
 	$scope.pageSize = 4; 
 	$scope.numberOfPages = function(){
