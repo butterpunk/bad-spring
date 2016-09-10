@@ -31,6 +31,7 @@
 	<div class="DARES">
 		<div class="dare-container" ng-repeat="dare in dares">
 			<div class="row individual-dare">
+			<div class="row">
 				<div class="col-xs-1">
 					<h1>{{$index+1}}.</h1>
 				</div>
@@ -39,6 +40,7 @@
 					<h6><span class="underLine">Challenge:</span> {{dare.description}}</h6>
 					<h6><span class="underLine">Points:</span> {{dare.points}}</h6>					
 				</div>
+			</div>
 				<div class="row button-dare">
 					<div class="arrow-container">
 						<a ng-click="upVote($index);"><img class="img-responsive" src="../assets/up.png"/></a>
