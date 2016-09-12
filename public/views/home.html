@@ -10,22 +10,22 @@
 	</div>	
 </div>	
 <div class="purple-container row">
-	<div class="logo-tagline-container col-xs-12 col-sm-4">
-		<h5>{{date}}</h5>
+	<div class="logo-tagline-container">
+		<h5>Updated {{date}}</h5>
 		<div class="logo-container">
 			<h1>BAD</h1>
 			<h1>CITY</h1>
 		</div>
 		<h4>World's Worst Travel Guide</h4>
-		<h5 id="cityName">New Orleans</h5>
-	</div>		
-	<div class="gif-container col-xs-12 col-sm-4">
+		<h5 id="cityName">New Orleans</h5>	
+<!-- 	<div class="gif-container col-xs-12 col-sm-4">
 		<img src="https://gifyu.com/images/big-freedia-208-venice-parade-oh-yass-gif.md.gif"/>
-	</div>	
+	</div> -->
+		<div class="logo-tagline-container col-xs-12 col-sm-4">
+			<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
+		</div>
+	</div>			
 </div>	
-<div class="logo-tagline-container col-xs-12 col-sm-4">
-	<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
-</div>
 <div class="challenges row">
 	<h1>CHALLENGES</h1>	
 	<div class="DARES">
@@ -46,7 +46,7 @@
 						<a ng-click="upVote($index);"><img class="img-responsive" src="../assets/up.png"/></a>
 					</div>
 					<div class="arrow-container">	
-						<a ng-click="upVote($index);"><img class="img-responsive" src="../assets/down.png"/></a>
+						<a ng-click="downVote($index);"><img class="img-responsive" src="../assets/down.png"/></a>
 					</div>	
 					<div class="arrow-container lightning-container">	
 						<a ng-click="lightning($index);"><img class="img-responsive" src="../assets/flash-lightning-bolt.png"/></a>
