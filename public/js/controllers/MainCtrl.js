@@ -23,7 +23,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     }
 });
 
+
   $scope.points = 100;
+  $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
   $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
@@ -146,10 +148,22 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 			]
   	};
 
- 
-
 	$scope.date = 'August 19, 2016';
-	$scope.dares=[{
+	$scope.weekend=[{
+		place: 'Gasa Gasa',
+		points: 75,
+		description: 'twin peaks',
+		lat: 29.9279,
+		long: -90.1279
+	},{
+		place: 'Hi Ho',
+		points: 100,
+		description: 'DJ Soul Sista on Saturday',
+		lat: 29.951065,
+		long: -90.071533
+		
+	}]
+	$scope.all=[{
 		place: 'St. Charles, Uptown',
 		points: 75,
 		description: 'take a walk down st. charles at night with a bottle of wine.',
@@ -193,6 +207,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		lat: 29.948919,
 		long: -90.117925					
 	},]
+	$scope.dares = $scope.all;
 	$scope.marker= [];
 	angular.forEach($scope.dares,function(value,key){
 		$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
@@ -206,12 +221,31 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	$scope.numberOfPages = function(){
 		return Math.ceil($scope.dares.length/$scope.pageSize);
 	}
+	$scope.changeDare = function(arg){
+		if(arg == 'wknd' && $scope.front == 1){
+			$scope.dares = $scope.weekend;
+			$scope.front = 0; 
+			angular.forEach(jQuery('.menu-item h6'),function(value,key){
+				angular.element(value).toggleClass('strike');
+				angular.element(value).toggleClass('non-strike');
+			});
+		}else if(arg == 'all' && $scope.front != 1 ){
+			$scope.dares = $scope.all;
+			$scope.front = 1;
+			angular.forEach(jQuery('.menu-item h6'),function(value,key){
+				angular.element(value).toggleClass('strike');
+				angular.element(value).toggleClass('non-strike');
+			});			
+		}
+	}
 	$scope.upVote = function(arg){
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
 			$scope.dares[arg].points = $scope.dares[arg].points + 25;
+
 		}else{
 			console.log('bong');
+			jQuery('#pointsRemaining').addClass('red');
 		}  
 
 	}

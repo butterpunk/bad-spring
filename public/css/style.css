@@ -1,3 +1,11 @@
+a{
+	text-decoration: inherit;
+	color:inherit;
+}
+a:hover{
+	text-decoration: inherit;
+	color:inherit;
+}
 .logo-tagline-container{
 	width: 500px;
 	margin: auto;
@@ -21,7 +29,7 @@ body {
 	font-family: 'Abel';
 }
  #map { 
- 	height: 600px;
+ 	height: 700px;
  	width: 100%; 
  }
  h1{
@@ -106,7 +114,7 @@ body {
 	}
 }
 .angular-google-map-container { 
-	height: 300px; 
+	height: 400px; 
 }
 .customFooter{
 	height: 100px;
@@ -176,4 +184,13 @@ body {
 }
 .hide{
 	display: none;
+}
+.strike{
+	text-decoration: line-through;
+}
+.menu-item:hover .non-strike{
+	text-decoration: line-through;
+}
+.red{
+	color: red;
 }
