@@ -9,6 +9,20 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	    });
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi) {
+	jQuery( document ).ready(function() {
+		console.log('here');
+	});	
+	jQuery(window).scroll(function() {
+    var height = jQuery(window).scrollTop();
+
+    if(height  > 650) {
+        // do something
+        jQuery('.navCustom').removeClass('hide');
+    }else{
+    	jQuery('.navCustom').addClass('hide');
+    }
+});
+
   $scope.points = 100;
   $log.currentLevel = $log.LEVELS.debug;
   $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
