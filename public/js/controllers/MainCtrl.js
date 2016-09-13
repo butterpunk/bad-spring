@@ -242,6 +242,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
 			$scope.dares[arg].points = $scope.dares[arg].points + 25;
+			if($scope.points == 0){
+				jQuery('#pointsRemaining').addClass('red');
+			}
 
 		}else{
 			console.log('bong');
@@ -252,9 +255,13 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	$scope.downVote = function(arg){
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
-			$scope.dares[arg].points = $scope.dares[arg].points - 25; 
+			$scope.dares[arg].points = $scope.dares[arg].points - 25;
+			if($scope.points == 0){
+				jQuery('#pointsRemaining').addClass('red');
+			}			 
 		}else{
 			console.log('bong');
+			jQuery('#pointsRemaining').addClass('red');		
 		} 
 
 	}	
