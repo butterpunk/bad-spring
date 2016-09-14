@@ -22,8 +22,18 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     	jQuery('.navCustom').addClass('hide');
     }
 });
+jQuery(document).mouseup(function (e)
+{
+    var container = jQuery('.popup');
 
-  $scope.popupChallenge = '';
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.addClass('hide');
+    }
+});	
+
+  // $scope.popupChallenge = '';
   $scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
