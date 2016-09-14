@@ -23,7 +23,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     }
 });
 
-
+  $scope.popupChallenge = '';
   $scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
@@ -264,5 +264,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 			jQuery('#pointsRemaining').addClass('red');		
 		} 
 
+	}
+	$scope.lightning = function(arg){
+		$scope.popupChallenge = $scope.dares[arg].description;
+		jQuery('.popup').removeClass('hide');
 	}	
 });
