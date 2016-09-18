@@ -203,19 +203,23 @@ body {
 	padding-bottom: 50px;
 	background-color: white;
 	z-index: 100;
-	width: 40%;
+	width: 50%;
 	margin: auto;
 	position: fixed;
-	top: 300px;
+	top: 200px;
 	text-align: center;
 	left: 50%;
     /*margin-right: -50%;*/
     transform: translate(-50%, 0);
+    border-style: dashed;
+    font-family: 'Source Code Pro';
 	box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.8);    	
 }
 .popup h5{
+	padding-top: 25px;
 	background-color: white;
-	width: auto;
+	width: 85%;
+	margin: auto;
 }
 .hover{
 	display: none;
