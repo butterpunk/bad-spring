@@ -1,6 +1,7 @@
 a{
 	text-decoration: inherit;
 	color:inherit;
+	cursor: pointer;
 }
 a:hover{
 	text-decoration: inherit;
