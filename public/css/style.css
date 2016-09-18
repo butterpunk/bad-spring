@@ -110,7 +110,7 @@ body {
 		margin-left: 0px;
 	}
 	.DARES{
-		margin-left: 15px;
+		margin-left: 0px;
 		margin-top: 25px;
 	}
 }
@@ -227,6 +227,9 @@ body {
 	.DARES{
 		width: 100%;
 	}
+	.purple-container{
+	background:url('../assets/tumblr_o2egblCSHJ1v501yio1_1280.jpg')no-repeat center center;	
+	}
 }
 @media only screen and (max-width : 510px) {
 	.logo-tagline-container {
@@ -258,4 +261,11 @@ body {
 	.logo-tagline-container h4{
 		font-size: 30px;
 	}
+}
+.white-box{
+	height: 200px;
+	background: linear-gradient(to bottom, rgba(250, 250, 250, 0), rgba(250, 250, 250, 1));
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
 }
