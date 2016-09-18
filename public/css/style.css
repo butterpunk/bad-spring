@@ -213,3 +213,12 @@ body {
 	background-color: white;
 	width: auto;
 }
+.hover{
+	display: none;
+}
+.arrow-hover:hover .primary{
+	display: none;
+}
+.arrow-hover:hover .hover{
+	display: block;
+}

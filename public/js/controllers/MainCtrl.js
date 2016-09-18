@@ -37,7 +37,10 @@ jQuery(document).mouseup(function (e)
   $scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
-  $scope.map = {center: {latitude: 29.960126, longitude: -90.033251 }, zoom: 13 };
+  $scope.map = {
+  					center: {latitude: 29.960126, longitude: -90.033251 }, 
+  					zoom: 13       
+      			};
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   $scope.options = {
   	scrollwheel: false, 
