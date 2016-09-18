@@ -1,9 +1,9 @@
 <div class="navCustom hide">
-	<div class="col-xs-8">	
+	<div class="mobile-nix col-xs-2 col-sm-8">	
 		<h6>BAD</h6>
 		<h6>CITY</h6>
 	</div>
-	<div class="right-stuff col-xs-4">
+	<div class="right-stuff col-xs-12 col-sm-4">
 		<h6 id="pointsRemaining">{{points}}</h6>
 		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">All Time</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
@@ -15,9 +15,10 @@
 		<div class="logo-container">
 			<h1>BAD</h1>
 			<h1>CITY</h1>
-		</div>
-		<h4>World's Worst Travel Guide</h4>
-		<h5 id="cityName">New Orleans</h5>	
+		
+			<h4>World's Worst Travel Guide</h4>
+			<h5 id="cityName">New Orleans</h5>
+		</div>	
 <!-- 	<div class="gif-container col-xs-12 col-sm-4">
 		<img src="https://gifyu.com/images/big-freedia-208-venice-parade-oh-yass-gif.md.gif"/>
 	</div> -->
@@ -55,7 +56,10 @@
 						</a>
 					</div>	
 					<div class="arrow-container lightning-container">	
-						<a ng-click="lightning($index);"><img class="img-responsive" src="../assets/flash-lightning-bolt.png"/></a>
+						<a class="arrow-hover" ng-click="lightning($index);">
+							<img class="img-responsive primary" src="../assets/flash-lightning-bolt.png"/>
+							<img class="img-responsive hover" src="../assets/hoverbolt.png"/>							
+						</a>
 					</div>						
 				</div>
 			</div>
