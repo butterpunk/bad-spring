@@ -165,6 +165,9 @@ body {
 	margin: auto;
 
 }
+#pointsRemaining{
+	background-color: #ffff80;
+}
 .lightning-container{
 	width: 20px;
 }
