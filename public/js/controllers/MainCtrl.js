@@ -15,7 +15,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	jQuery(window).scroll(function() {
     var height = jQuery(window).scrollTop();
 
-    if(height  > 650) {
+    if(height  > 350) {
         // do something
         jQuery('.navCustom').removeClass('hide');
     }else{
