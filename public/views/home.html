@@ -4,8 +4,8 @@
 		<h6>CITY</h6>
 	</div>
 	<div class="right-stuff col-xs-12 col-sm-5">
-		<h6 id="pointsRemaining">Your points: {{points}}</h6>
-		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">All Time</h6></a>
+		<h6 id="pointsRemaining">{{points}}</h6>
+		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Allways</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
 	</div>	
 </div>	
@@ -34,7 +34,7 @@
 			<div class="row individual-dare">
 			<div class="row">
 				<div class="col-xs-1">
-					<h1>{{$index+1}}.</h1>
+					<h1 class="mobile-nix">{{$index+1}}.</h1>
 				</div>
 				<div class="col-xs-11">
 					<h6><span class="underLine">Location:</span> {{dare.place}}</h6>
@@ -70,7 +70,7 @@
 	<img src="http://www.reactiongifs.com/r/2013/06/I-dont-believe-you.gif"/>
 	<h5>This lightning bolt will fill out yellow when we've confirmed that you've done this:</h5>
 	<h5> {{popupChallenge}}</h5> 
-	<h5>To prove it send me a photo: via email: blakebutterworth@gmail.com, twitter: @blakebutterwort, instagram: @butterpunk, of facebook: blake butterworth</h5>
+	<h5>To prove it send me a photo: blakebutterworth@gmail.com, or instagram: @butterpunk</h5>
 </div>
 <!-- <div class="white-box">
 </div>	 -->	

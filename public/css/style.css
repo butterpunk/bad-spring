@@ -220,6 +220,7 @@ body {
 	background-color: white;
 	width: 85%;
 	margin: auto;
+	font-size: 14px;
 }
 .hover{
 	display: none;
@@ -237,8 +238,14 @@ body {
 	.purple-container{
 	background:url('../assets/tumblr_o2egblCSHJ1v501yio1_1280.jpg')no-repeat center center;	
 	}
+	.popup{
+		width: 80%;
+	}
 }
 @media only screen and (max-width : 510px) {
+	.popup{
+		width: 100%;
+	}
 	.logo-tagline-container {
 		width: 100%;
 	}	
