@@ -231,6 +231,9 @@ body {
 .arrow-hover:hover .hover{
 	display: block;
 }
+.mobile{
+	display: none;
+}
 @media only screen and (max-width : 935px) {
 	.DARES{
 		width: 100%;
@@ -255,6 +258,9 @@ body {
 	}
 	.mobile-nix{
 		display: none;
+	}
+	.mobile{
+		display: block;
 	}
 	.navCustom{
 		height: 68px;
