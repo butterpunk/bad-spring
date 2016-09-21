@@ -281,7 +281,12 @@ jQuery(document).mouseup(function (e)
 	$scope.lightning = function(arg){
 		$scope.popupChallenge = $scope.dares[arg].description;
 		jQuery('.popup').removeClass('hide');
+		/*
 		jQuery('body').css('overflow','hidden');
 		jQuery('body').css('position','fixed');
+		*/
+		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
+         e.preventDefault();
+    });
 	}	
 });
