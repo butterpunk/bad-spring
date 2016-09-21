@@ -30,6 +30,7 @@ jQuery(document).mouseup(function (e)
         && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
         container.addClass('hide');
+  		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
 });	
 
