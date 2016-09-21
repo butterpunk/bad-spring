@@ -33,7 +33,11 @@ jQuery(document).mouseup(function (e)
   		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
 });	
-
+$scope.exit = function(){
+	var container = jQuery('.popup');
+	container.addClass('hide');
+  	jQuery('body').css('overflow', 'auto').off('touchmove');      
+}
   // $scope.popupChallenge = '';
   $scope.points = 100;
   $scope.front = 1; 
