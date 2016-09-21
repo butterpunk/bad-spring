@@ -246,6 +246,7 @@ body {
 	background:url('../assets/tumblr_o2egblCSHJ1v501yio1_1280.jpg')no-repeat center center;	
 	}
 	.popup{
+		top: 100px;
 		width: 80%;
 	}
 }
