@@ -49,7 +49,7 @@
 							<img class="img-responsive hover" src="../assets/hoverup.png"/>	
 						</a>
 					</div>
-					<a style="z-index: 100000; display:block;" ng-click="downVote($index);">
+					<a ng-click="downVote($index);">
 					<div class="arrow-container">	
 						<a  class="arrow-hover" ng-click="downVote($index);">
 							<img class="img-responsive primary" src="../assets/down.png"/>
@@ -71,6 +71,11 @@
 	</div>
 </div>
 <div class="popup hide">
+	<div class="exit-container">
+		<a ng-click="exit();">
+			<img src="../assets/exit-icon.png"/>
+		</a>
+	</div>
 	<img src="http://www.reactiongifs.com/r/2013/06/I-dont-believe-you.gif"/>
 	<h5>This lightning bolt will fill out yellow when we've confirmed that you've done this:</h5>
 	<h5> {{popupChallenge}}</h5> 
