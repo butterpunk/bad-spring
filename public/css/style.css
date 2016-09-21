@@ -226,14 +226,17 @@ body {
 .hover{
 	display: none;
 }
+
+.mobile{
+	display: none;
+}
+@media only screen and (min-width: 935px){
 .arrow-hover:hover .primary{
 	display: none;
 }
 .arrow-hover:hover .hover{
 	display: block;
-}
-.mobile{
-	display: none;
+}	
 }
 @media only screen and (max-width : 935px) {
 	.DARES{
