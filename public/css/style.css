@@ -230,7 +230,7 @@ body {
 .mobile{
 	display: none;
 }
-@media only screen and (min-width: 935px){
+@media all and (min-width: 900px) {
 .arrow-hover:hover .primary{
 	display: none;
 }
