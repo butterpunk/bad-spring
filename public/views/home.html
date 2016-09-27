@@ -1,30 +1,103 @@
-<div class="row">
-	<div class="side-bar col-xs-12 col-sm-4">
-		<h5>{{date}}</h5>
+<div class="navCustom hide">
+	<div class="mobile-nix col-xs-2 col-sm-7">	
+		<h6>BAD</h6>
+		<h6>CITY</h6>
+	</div>
+	<div class="right-stuff col-xs-12 col-sm-5">
+		<h6 id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6>
+		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
+		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
+	</div>	
+</div>	
+<div class="purple-container row">
+	<div class="logo-tagline-container">
+		<h5>Updated {{date}}</h5>
 		<div class="logo-container">
 			<h1>BAD</h1>
 			<h1>CITY</h1>
+		
+			<h4>World's Worst Travel Guide</h4>
+			<h5 id="cityName">New Orleans</h5>
+		</div>	
+<!-- 	<div class="gif-container col-xs-12 col-sm-4">
+		<img src="https://gifyu.com/images/big-freedia-208-venice-parade-oh-yass-gif.md.gif"/>
+	</div> -->
+		<div class="logo-tagline-container col-xs-12 col-sm-4">
+			<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
 		</div>
-		<h4>World's Worst Travel Guide</h4>
-		<h5 id="cityName">New Orleans</h5>
-		<h6 id="cityMission"><span class="underLine">City Mission:</span> Explore New Orleans as we do. <span class="underLine">Drink</span> much, <span class="underLine">eat</span> well, and <span class="underLine">fuck</span> around</h6>
-		<div class="gif-container" >
-			<img class="img-responsive" src="http://az616578.vo.msecnd.net/files/2016/03/08/6359305555504029971141038659_big-freedia-208-venice-parade-oh-yass-gif.gif"/>
-		</div>
-	</div>	
-	<div class="col-xs-12 col-sm-6 DARES">
+	</div>			
+</div>	
+<div class="challenges row">
+	<h1>CHALLENGES</h1>	
+	<div class="DARES">
 		<div class="dare-container" ng-repeat="dare in dares">
 			<div class="row individual-dare">
-
-				<h6>{{$index + 1}}.             <span class="underLine">Location:</span> {{dare.place}}</h6>
-				<h6 class="sub"><span class="underLine">Challenge:</span> {{dare.description}}</h6>
-				<h6 class="sub"><span class="underLine">Points:</span> {{dare.points}}</h6>	
+			<div class="row">
+				<div class="col-xs-1">
+					<h1 class="mobile-nix">{{$index+1}}.</h1>
+				</div>
+				<div class="col-xs-11">
+					<h6><span class="underLine">Location:</span> {{dare.place}}</h6>
+					<h6><span class="underLine">Challenge:</span> {{dare.description}}</h6>
+					<h6><span class="underLine">Points:</span> {{dare.points}}</h6>					
+				</div>
+			</div>
+				<div class="row button-dare">
+					<div class="arrow-container">
+						<a ng-click="upVote($index);">
+							<img class="img-responsive primary" src="../assets/up.png"/>
+							<img class="img-responsive hover" src="../assets/hoverup.png"/>	
+						</a>
+					</div>
+					<a ng-click="downVote($index);">
+					<div class="arrow-container">	
+						<a  class="arrow-hover" ng-click="downVote($index);">
+							<img class="img-responsive primary" src="../assets/down.png"/>
+							<img class="img-responsive hover" src="../assets/hoverdown.png"/>
+						</a>
+					</div>
+					</a>
+					<a ng-click="lightning($index);">	
+					<div class="arrow-container lightning-container">	
+						<a class="arrow-hover" ng-click="lightning($index);">
+							<img class="img-responsive primary" src="../assets/flash-lightning-bolt.png"/>
+							<img class="img-responsive hover" src="../assets/hoverbolt.png"/>							
+						</a>
+					</div>
+					</a>						
+				</div>
 			</div>
 		</div>	
 	</div>
 </div>
-<!-- <div class="row">
-  <div id="map"></div>
-</div>	 -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5PIdkx0leUj4LLCnaRIbnEeEuN-BSwKE&callback=initMap"
-    async defer></script>
+<div class="popup hide">
+	<div class="exit-container">
+		<a ng-click="exit();">
+			<img src="../assets/exit-icon.png"/>
+		</a>
+	</div>
+	<img src="http://www.reactiongifs.com/r/2013/06/I-dont-believe-you.gif"/>
+	<h5>This lightning bolt will fill out yellow when we've confirmed that you've done this.</h5>
+	<!-- <h5> {{popupChallenge}}</h5> 
+ -->	<h5>To prove it send me a photo: blakebutterworth@gmail.com, or instagram: @butterpunk</h5>
+</div>
+<!-- <div class="white-box">
+</div>	 -->	
+<ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
+        <ui-gmap-marker 
+        	ng-repeat="mark in marker"
+        	coords="mark.coords" 
+        	options="mark.options" 
+        	idkey="mark.id">
+        </ui-gmap-marker>    
+r    
+</ui-gmap-google-map>
+<div class="customFooter">
+	<p>2016 Bad Spring Creative</p>
+</div>
+<script>
+$( document ).ready(function() {
+	console.log('here');
+});	
+</script>	
+ 
