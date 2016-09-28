@@ -168,15 +168,15 @@ $scope.exit = function(){
 
 	$scope.date = 'August 19, 2016';
 	$scope.weekend=[{
-		place: 'Gasa Gasa',
+		place: 'Tipitinas',
 		points: 75,
-		description: 'twin peaks',
+		description: 'Alexis of Alexis and the Samauri covers the whole Little Jagged Pill Album',
 		lat: 29.9279,
 		long: -90.1279
 	},{
-		place: 'Hi Ho',
+		place: 'Art for Artsake',
 		points: 100,
-		description: 'DJ Soul Sista on Saturday',
+		description: 'Steal a bottle of wine',
 		lat: 29.951065,
 		long: -90.071533
 		
