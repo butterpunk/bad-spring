@@ -8,7 +8,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	        libraries: 'weather,geometry,visualization'
 	    });
 }])
-.controller('MainController', function($scope, $log, uiGmapGoogleMapApi) {
+.controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd) {
 	jQuery( document ).ready(function() {
 		console.log('here');
 	});	
@@ -293,5 +293,9 @@ $scope.exit = function(){
 		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
          e.preventDefault();
     });
-	}	
+	}
+	
+	Nerd.get().then(function(nerds) {
+        console.log(nerds);
+    });	
 });
