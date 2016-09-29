@@ -9,6 +9,20 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	    });
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd) {
+	
+	$scope.all = [];
+
+	Nerd.get().then(function(nerds) {
+        console.log(nerds);
+        angular.forEach(nerds.data,function(value,key){
+        	if(value.place != ""){
+        		$scope.all.push(value);
+        	}
+        });
+        console.log($scope.all);
+
+    });
+
 	jQuery( document ).ready(function() {
 		console.log('here');
 	});	
@@ -21,9 +35,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     }else{
     	jQuery('.navCustom').addClass('hide');
     }
-});
-jQuery(document).mouseup(function (e)
-{
+	});
+	jQuery(document).mouseup(function (e)
+	{
     var container = jQuery('.popup');
 
     if (!container.is(e.target) // if the target of the click isn't the container...
@@ -32,7 +46,7 @@ jQuery(document).mouseup(function (e)
         container.addClass('hide');
   		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
-});	
+	});	
 $scope.exit = function(){
 	var container = jQuery('.popup');
 	container.addClass('hide');
@@ -181,7 +195,7 @@ $scope.exit = function(){
 		long: -90.071533
 		
 	}]
-	$scope.all=[{
+	$scope.oldAll=[{
 		place: 'St. Charles, Uptown',
 		points: 75,
 		description: 'take a walk down st. charles from Napoleon to Audobon park at night and finish a bottle of red wine.',
@@ -295,7 +309,5 @@ $scope.exit = function(){
     });
 	}
 	
-	Nerd.get().then(function(nerds) {
-        console.log(nerds);
-    });	
+	
 });
