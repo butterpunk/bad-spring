@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://localhost/test-db'
+	url : 'mongodb://127.0.0.1:27017'
 }
