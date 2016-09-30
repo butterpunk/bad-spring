@@ -8,18 +8,7 @@ module.exports = function(app) {
 	// handle things like api calls
 	// authentication routes
     // sample api route
-    app.get('/api/nerds', function(req, res) {
-        // use mongoose to get all nerds in the database
-        Nerd.find(function(err, nerds) {
 
-            console.log('here');
-
-            if (err)
-                res.send(err);
-
-            res.json(nerds); // return all nerds in JSON format
-        });
-    });
 
     app.post('/api/challenges',function(req,res){      
         var challenge = new Challenge();
@@ -39,6 +28,18 @@ module.exports = function(app) {
 
     });
 
+    
+    app.delete('/api/challenges',function(req,res){
+        
+        Challenge.findByIdAndRemove(req.body.id,function(err,chal){
+            var response = {
+                message: "Challenge successfully delted",
+                id: chal.id
+            };
+            res.send(response);
+        })
+    });
+    
     app.get('/api/challenges', function(req, res) {
         // use mongoose to get all nerds in the database
         Challenge.find(function(err, nerds) {
