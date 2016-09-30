@@ -39,6 +39,43 @@ module.exports = function(app) {
             res.send(response);
         })
     });
+
+    app.post('/api/challenges/upvote',function(req, res){
+        Challenge.findById(req.body.id,function(err,chal){
+            if(err){
+                res.status(500).send(err);
+            }else{
+                
+                chal.points = chal.points + 25; 
+                chal.save(function(err, chal){
+                    if(err){
+                        res.status(500).send(err);
+                    }
+                    res.send(chal);
+                });
+            }
+
+        });
+    });
+
+    app.post('/api/challenges/downvote',function(req, res){
+        Challenge.findById(req.body.id,function(err,chal){
+            if(err){
+                res.status(500).send(err);
+            }else{
+                
+                chal.points = chal.points - 25; 
+                chal.save(function(err, chal){
+                    if(err){
+                        res.status(500).send(err);
+                    }
+                    res.send(chal);
+                });
+            }
+
+        });
+    });
+
     
     app.get('/api/challenges', function(req, res) {
         // use mongoose to get all nerds in the database
