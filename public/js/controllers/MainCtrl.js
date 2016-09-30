@@ -10,7 +10,15 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd) {
 	
+	//add markers here in the function to hit API
+	$scope.currentPage = 0;
+	$scope.pageSize = 4; 
+	$scope.numberOfPages = function(){
+		return Math.ceil($scope.dares.length/$scope.pageSize);
+	}
+
 	$scope.all = [];
+	$scope.marker= [];
 
 	Nerd.get().then(function(nerds) {
         console.log(nerds);
@@ -20,6 +28,17 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
         	}
         });
         console.log($scope.all);
+		angular.forEach($scope.all,function(value,key){
+			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+		});
+		console.log($scope.marker);
+		 uiGmapGoogleMapApi.then(function(marker) {
+		  	console.log(marker);
+		  });
+		$scope.map = {
+	  					center: {latitude: 29.960126, longitude: -90.033251 }, 
+	  					zoom: 13       
+	      			};
 
     });
 
@@ -56,129 +75,7 @@ $scope.exit = function(){
   $scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
-  $scope.map = {
-  					center: {latitude: 29.960126, longitude: -90.033251 }, 
-  					zoom: 13       
-      			};
-  // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
-  $scope.options = {
-  	scrollwheel: false, 
-	styles: [   {
-			        "featureType": "road",
-			        "elementType": "labels",
-			        "stylers": [
-			            {
-			                "visibility": "on"
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "poi",
-			        "stylers": [
-			            {
-			                "visibility": "off"
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "administrative",
-			        "stylers": [
-			            {
-			                "visibility": "off"
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "road",
-			        "elementType": "geometry.fill",
-			        "stylers": [
-			            {
-			                "color": "#000000"
-			            },
-			            {
-			                "weight": 1
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "road",
-			        "elementType": "geometry.stroke",
-			        "stylers": [
-			            {
-			                "color": "#000000"
-			            },
-			            {
-			                "weight": 0.8
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "landscape",
-			        "stylers": [
-			            {
-			                "color": "#ffffff"
-			            }
-			        ]
-			    },
-			    {
-			        "featureType": "water",
-			        "stylers": [	        
-					{
-               			 "color": "#7A7AA5"
-            		}
-			        ]
-			    },
-			    {
-			        "featureType": "transit",
-			        "stylers": [
-			            {
-			                "visibility": "off"
-			            }
-			        ]
-			    },
-			    {
-			        "elementType": "labels",
-			        "stylers": [
-			            {
-			                "visibility": "off"
-			            }
-			        ]
-			    },
-			    {
-			        "elementType": "labels.text",
-			        "stylers": [
-			            {
-			                "visibility": "on"
-			            }
-			        ]
-			    },
-			    {
-			        "elementType": "labels.text.stroke",
-			        "stylers": [
-			            {
-			                "color": "#ffffff"
-			            }
-			        ]
-			    },
-			    {
-			        "elementType": "labels.text.fill",
-			        "stylers": [
-			            {
-			                "color": "#000000"
-			            }
-			        ]
-			    },
-			    {
-			        "elementType": "labels.icon",
-			        "stylers": [
-			            {
-			                "visibility": "on"
-			            }
-			        ]
-			    } 				
 
-			]
-  	};
 
 	$scope.date = 'August 19, 2016';
 	$scope.weekend=[{
@@ -239,20 +136,8 @@ $scope.exit = function(){
 		lat: 29.948919,
 		long: -90.117925					
 	},]
+
 	$scope.dares = $scope.all;
-	$scope.marker= [];
-	angular.forEach($scope.dares,function(value,key){
-		$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
-	});
-	console.log($scope.marker);
-	 uiGmapGoogleMapApi.then(function(marker) {
-	  	console.log(marker);
-	  });	
-	$scope.currentPage = 0;
-	$scope.pageSize = 4; 
-	$scope.numberOfPages = function(){
-		return Math.ceil($scope.dares.length/$scope.pageSize);
-	}
 	$scope.changeDare = function(arg){
 		if(arg == 'wknd' && $scope.front == 1){
 			$scope.dares = $scope.weekend;
@@ -270,6 +155,133 @@ $scope.exit = function(){
 			});			
 		}
 	}
+
+  // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
+  	$scope.options = {
+	  	scrollwheel: false, 
+		styles: [   {
+				        "featureType": "road",
+				        "elementType": "labels",
+				        "stylers": [
+				            {
+				                "visibility": "on"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "poi",
+				        "stylers": [
+				            {
+				                "visibility": "off"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "administrative",
+				        "stylers": [
+				            {
+				                "visibility": "off"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "road",
+				        "elementType": "geometry.fill",
+				        "stylers": [
+				            {
+				                "color": "#000000"
+				            },
+				            {
+				                "weight": 1
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "road",
+				        "elementType": "geometry.stroke",
+				        "stylers": [
+				            {
+				                "color": "#000000"
+				            },
+				            {
+				                "weight": 0.8
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "landscape",
+				        "stylers": [
+				            {
+				                "color": "#ffffff"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "water",
+				        "stylers": [	        
+						{
+	               			 "color": "#7A7AA5"
+	            		}
+				        ]
+				    },
+				    {
+				        "featureType": "transit",
+				        "stylers": [
+				            {
+				                "visibility": "off"
+				            }
+				        ]
+				    },
+				    {
+				        "elementType": "labels",
+				        "stylers": [
+				            {
+				                "visibility": "off"
+				            }
+				        ]
+				    },
+				    {
+				        "elementType": "labels.text",
+				        "stylers": [
+				            {
+				                "visibility": "on"
+				            }
+				        ]
+				    },
+				    {
+				        "elementType": "labels.text.stroke",
+				        "stylers": [
+				            {
+				                "color": "#ffffff"
+				            }
+				        ]
+				    },
+				    {
+				        "elementType": "labels.text.fill",
+				        "stylers": [
+				            {
+				                "color": "#000000"
+				            }
+				        ]
+				    },
+				    {
+				        "elementType": "labels.icon",
+				        "stylers": [
+				            {
+				                "visibility": "on"
+				            }
+				        ]
+				    } 				
+
+				]
+	  	};	
+
+	$scope.currentPage = 0;
+	$scope.pageSize = 4; 
+	$scope.numberOfPages = function(){
+		return Math.ceil($scope.dares.length/$scope.pageSize);
+	}
+
 	$scope.upVote = function(arg){
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
