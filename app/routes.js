@@ -1,4 +1,10 @@
 // grab the nerd model we just created
+const express = require('express')
+const bodyParser= require('body-parser')
+const app = express()
+
+app.use(bodyParser.urlencoded({extended: true}))
+
 var Nerd = require('./models/nerd');
 var Challenge = require('./models/challenge');
 
@@ -10,20 +16,25 @@ module.exports = function(app) {
     // sample api route
 
 
-    app.post('/api/challenges',function(req,res){      
+    app.post('/api/challenges',function(req,res){
+        console.log(req.body.place)
         var challenge = new Challenge();
         
         challenge.place = req.body.place;
+        console.log(challenge.place)
         challenge.points = req.body.points;
         challenge.description = req.body.description;
         challenge.lat = req.body.lat;
-        challenge.long = req.body.long;
+        challenge.long = req.body.long; 
+
+        console.log(challenge)
 
         challenge.save(function(err){
+            console.log(challenge)
             if (err)
                 res.send(err);
 
-            res.json({message: 'Challenge Created!'})
+            res.json({message: "Challenge Created!"})
         });
 
     });
