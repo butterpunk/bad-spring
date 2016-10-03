@@ -7,7 +7,7 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
         },
 
         
-        post : upvote() = function(nerdData) {
+        post : function(nerdData) {
             return $http.post('/api/nerds', nerdData);
         },
         /*

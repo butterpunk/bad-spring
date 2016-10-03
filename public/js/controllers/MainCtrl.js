@@ -283,6 +283,7 @@ $scope.exit = function(){
 	}
 
 	$scope.upVote = function(arg){
+		
 		console.log($scope.all[arg]);
 		$http.post('/api/challenges/upvote?body=' + encodeURIComponent(JSON.stringify($scope.all[arg])))
 			.success(function(data){

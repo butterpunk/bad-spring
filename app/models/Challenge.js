@@ -1,6 +1,6 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-<<<<<<< HEAD
+//<<<<<<< HEAD
 var Schema      = mongoose.Schema;
 
 // define our nerd model
@@ -39,10 +39,11 @@ Challenge.pre('save', function(next){
 module.exports = mongoose.model('Challenge', Challenge);
 
 
-=======
+//=======
 
 // define our nerd model
 // module.exports allows us to pass this to other files when it is called
+/*
 module.exports = mongoose.model('Challenge', {
 	place : {type : String, default: ''},
 	points: {type : Number, default: ''},
@@ -50,4 +51,4 @@ module.exports = mongoose.model('Challenge', {
 	lat: {type : Number, default: ''},
 	long: {type : Number, default: ''}	
 });
->>>>>>> dev
+>>>>>>> dev */
