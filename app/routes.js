@@ -5,7 +5,7 @@ const app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
 
-var Nerd = require('./models/nerd');
+//var Nerd = require('./models/nerd');
 var Challenge = require('./models/challenge');
 
 module.exports = function(app) {
