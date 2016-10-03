@@ -8,7 +8,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	        libraries: 'weather,geometry,visualization'
 	    });
 }])
-.controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd) {
+.controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
 	
 	//add markers here in the function to hit API
 	$scope.currentPage = 0;
@@ -283,6 +283,16 @@ $scope.exit = function(){
 	}
 
 	$scope.upVote = function(arg){
+		console.log($scope.all[arg]);
+		$http.post('/api/challenges/upvote?body=' + encodeURIComponent(JSON.stringify($scope.all[arg])))
+			.success(function(data){
+				console.log('successful upvote');
+			})
+			.error(function(data){
+				console.log('Error: ' + data);
+			});
+		
+		/*
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
 			$scope.dares[arg].points = $scope.dares[arg].points + 25;
@@ -293,7 +303,7 @@ $scope.exit = function(){
 		}else{
 			console.log('bong');
 			jQuery('#pointsRemaining').addClass('red');
-		}  
+		} */ 
 
 	}
 	$scope.downVote = function(arg){

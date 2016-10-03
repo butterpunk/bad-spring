@@ -6,14 +6,11 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
             return $http.get('/api/challenges');
         },
 
-
+        
+        post : upvote() = function(nerdData) {
+            return $http.post('/api/nerds', nerdData);
+        },
         /*
-        create : function(nerdData) {
-            return $http.post('/api/nerds', nerdData);
-        },
-        post : function(nerdData) {
-            return $http.post('/api/nerds', nerdData);
-        },
         // call to DELETE a nerd
         delete : function(id) {
             return $http.delete('/api/nerds/' + id);
