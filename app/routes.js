@@ -52,19 +52,20 @@ module.exports = function(app) {
     });
 
     app.post('/api/challenges/upvote',function(req, res){
+        console.log(req.body);
         Challenge.findById(req.body.id,function(err,chal){
             if(err){
                 res.status(500).send(err);
             }else{
-                console.log(chal);
-                //chal.points = chal.points + 25; 
-                /*
+                // console.log(chal);
+                chal.points = chal.points + 25; 
+                
                 chal.save(function(err, chal){
                     if(err){
                         res.status(500).send(err);
                     }
                     res.send(chal);
-                });*/
+                });
             }
 
         });

@@ -21,17 +21,17 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	$scope.marker= [];
 
 	Nerd.get().then(function(nerds) {
-        console.log(nerds);
+      //  console.log(nerds);
         angular.forEach(nerds.data,function(value,key){
         	if(value.place != ""){
         		$scope.all.push(value);
         	}
         });
-        console.log($scope.all);
+ //       console.log($scope.all);
 		angular.forEach($scope.all,function(value,key){
 			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
 		});
-		console.log($scope.marker);
+	//	console.log($scope.marker);
 		 uiGmapGoogleMapApi.then(function(marker) {
 		  	console.log(marker);
 		  });
@@ -283,37 +283,46 @@ $scope.exit = function(){
 	}
 
 	$scope.upVote = function(arg){
+		if($scope.points - 25 >= 0){
+			$scope.points = $scope.points - 25; 		
 		
-		console.log($scope.all[arg]);
-		$http.post('/api/challenges/upvote?body=' + encodeURIComponent(JSON.stringify($scope.all[arg])))
+		$http.defaults.headers.post["Content-Type"] = "application/json";
+		body = {'id':$scope.all[arg]._id};
+		$http.post('/api/challenges/upvote',body)
 			.success(function(data){
 				console.log('successful upvote');
+				console.log(data.points);
+				$scope.all[arg].points=data.points;
 			})
 			.error(function(data){
 				console.log('Error: ' + data);
 			});
-		
-		/*
-		if($scope.points - 25 >= 0){
-			$scope.points = $scope.points - 25; 
-			$scope.dares[arg].points = $scope.dares[arg].points + 25;
-			if($scope.points == 0){
-				jQuery('#pointsRemaining').addClass('red');
-			}
-
+		if($scope.points == 0){
+			jQuery('#pointsRemaining').addClass('red');
+		}			 
 		}else{
 			console.log('bong');
-			jQuery('#pointsRemaining').addClass('red');
-		} */ 
-
+			jQuery('#pointsRemaining').addClass('red');		
+		} 
 	}
 	$scope.downVote = function(arg){
 		if($scope.points - 25 >= 0){
 			$scope.points = $scope.points - 25; 
-			$scope.dares[arg].points = $scope.dares[arg].points - 25;
-			if($scope.points == 0){
-				jQuery('#pointsRemaining').addClass('red');
-			}			 
+			//actually modify the DB
+			$http.defaults.headers.post["Content-Type"] = "application/json";
+			body = {'id':$scope.all[arg]._id};
+			$http.post('/api/challenges/downvote',body)
+				.success(function(data){
+					console.log('successful upvote');
+					console.log(data.points);
+					$scope.all[arg].points=data.points;
+				})
+				.error(function(data){
+					console.log('Error: ' + data);
+				});			
+				if($scope.points == 0){
+					jQuery('#pointsRemaining').addClass('red');
+				}			 
 		}else{
 			console.log('bong');
 			jQuery('#pointsRemaining').addClass('red');		
