@@ -45,14 +45,15 @@ module.exports = function(app) {
             if(err){
                 res.status(500).send(err);
             }else{
-                
-                chal.points = chal.points + 25; 
+                console.log(chal);
+                //chal.points = chal.points + 25; 
+                /*
                 chal.save(function(err, chal){
                     if(err){
                         res.status(500).send(err);
                     }
                     res.send(chal);
-                });
+                });*/
             }
 
         });
