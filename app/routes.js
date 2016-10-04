@@ -155,8 +155,12 @@ module.exports = function(app,passport) {
 		res.sendfile('./public/index.html');
 	});
 
-    app.get('/verify', isLoggedIn, function(req, res){
+    app.post('/verify', isLoggedIn, function(req, res){
         console.log('we ehre at all?');
+        response = {
+            message : "YES"
+        };
+        res.send(response);
     });
 
 };
@@ -164,8 +168,9 @@ module.exports = function(app,passport) {
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated()){
+    if (req.isAuthenticated()){        
         console.log('yes we are authenticated');
+
         return next();
     }
     else{

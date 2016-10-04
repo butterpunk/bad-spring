@@ -9,7 +9,23 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	    });
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
-	
+	$http.post('/verify')
+			.success(function(data){
+				console.log('ARE WE IN THE VERIFY BLOCK');
+				if(data.message == 'NO'){
+						$scope.isLogged = false; 
+						console.log(isLogged);
+				}else{
+						console.log('were in the is logged in true block');
+						$scope.isLogged = true;
+
+				}
+				console.log($scope.isLogged);	
+
+			})
+			.error(function(data){
+				console.log('ARE WE IN THE VERIFY BLOCK');
+			});	
 	//add markers here in the function to hit API
 	$scope.errormessage = '';
 	$scope.currentPage = 0;
@@ -367,6 +383,7 @@ $scope.exitlogin = function(){
 						jQuery('#errorText').innerHTML = data.message;
 						$scope.errormessage = 'Error: user may already exist';
 					}else{
+						$scope.isLogged = true;
 						console.log('SUCESS?');
 						$scope.errormessage = '';
 						$scope.exitlogin();
@@ -385,6 +402,7 @@ $scope.exitlogin = function(){
 						jQuery('#errorText').innerHTML = data.message;
 						$scope.errormessage = 'Error: Probably wrong password';
 					}else{
+						$scope.isLogged = true;
 						console.log('SUCESS?');
 						$scope.errormessage = '';
 						$scope.exitlogin();
