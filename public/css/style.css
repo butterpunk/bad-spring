@@ -223,6 +223,30 @@ body {
 	margin: auto;
 	font-size: 14px;
 }
+.loginpopup{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: white;
+	z-index: 100;
+	width: 50%;
+	margin: auto;
+	position: fixed;
+	top: 200px;
+	text-align: center;
+	left: 50%;
+    /*margin-right: -50%;*/
+    transform: translate(-50%, 0);
+    border-style: dashed;
+    font-family: 'Source Code Pro';
+	box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.8);    	
+}
+.loginpopup h5{
+	padding-top: 25px;
+	background-color: white;
+	width: 85%;
+	margin: auto;
+	font-size: 14px;
+}
 .hover{
 	display: none;
 }

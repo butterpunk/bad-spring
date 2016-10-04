@@ -290,9 +290,12 @@ $scope.exit = function(){
 		body = {'id':$scope.all[arg]._id};
 		$http.post('/api/challenges/upvote',body)
 			.success(function(data){
-				console.log('successful upvote');
+				if(data.message == 'NO'){
+					$scope.loginPopup();
+				}else{	
 				console.log(data.points);
 				$scope.all[arg].points=data.points;
+				}
 			})
 			.error(function(data){
 				console.log('Error: ' + data);
@@ -313,9 +316,13 @@ $scope.exit = function(){
 			body = {'id':$scope.all[arg]._id};
 			$http.post('/api/challenges/downvote',body)
 				.success(function(data){
-					console.log('successful upvote');
+					console.log(data.message);
+					if(data.message == 'NO'){
+						$scope.loginPopup();
+					}else{
 					console.log(data.points);
 					$scope.all[arg].points=data.points;
+					}
 				})
 				.error(function(data){
 					console.log('Error: ' + data);
@@ -328,6 +335,10 @@ $scope.exit = function(){
 			jQuery('#pointsRemaining').addClass('red');		
 		} 
 
+	}
+	$scope.loginPopup = function(){
+		console.log('CREATE POPUP HERE');
+		jQuery('.loginpopup').removeClass('hide');
 	}
 	$scope.lightning = function(arg){
 		$scope.popupChallenge = $scope.dares[arg].description;

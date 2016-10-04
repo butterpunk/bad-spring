@@ -4,7 +4,8 @@
 		<h6>CITY</h6>
 	</div>
 	<div class="right-stuff col-xs-12 col-sm-5">
-		<h6 id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6>
+		<a ng-click="login();"><h6>Login/Signup</h6></a>
+		<!-- <h6 id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6> -->
 		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
 	</div>	
@@ -80,6 +81,22 @@
 	<h5>This lightning bolt will fill out yellow when we've confirmed that you've done this.</h5>
 	<!-- <h5> {{popupChallenge}}</h5> 
  -->	<h5>To prove it send me a photo: blakebutterworth@gmail.com, or instagram: @butterpunk</h5>
+</div>
+<div class="loginpopup hide">
+	<h5>You must Be logged in to do this</h5>
+	<form action="/signup" method="POSt">
+		<h2>SIGNUP</h2>
+	  <input type="text" placeholder="email" name="email">
+	  <input type="text" placeholder="password" name="password">
+	  <button type="submit">Submit</button>
+	</form>
+
+	<form action="/login" method="POSt">
+		<h2>LOGIN</h2>
+	  <input type="text" placeholder="email" name="email">
+	  <input type="text" placeholder="password" name="password">
+	  <button type="submit">Submit</button>
+	</form>
 </div>
 <!-- <div class="white-box">
 </div>	 -->	

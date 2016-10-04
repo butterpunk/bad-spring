@@ -51,7 +51,7 @@ module.exports = function(app,passport) {
         })
     });
 
-    app.post('/api/challenges/upvote',function(req, res){
+    app.post('/api/challenges/upvote', isLoggedIn, function(req, res){
         console.log(req.body);
         Challenge.findById(req.body.id,function(err,chal){
             if(err){
@@ -71,7 +71,7 @@ module.exports = function(app,passport) {
         });
     });
 
-    app.post('/api/challenges/downvote',function(req, res){
+    app.post('/api/challenges/downvote',isLoggedIn, function(req, res){
         Challenge.findById(req.body.id,function(err,chal){
             if(err){
                 res.status(500).send(err);
@@ -107,36 +107,44 @@ module.exports = function(app,passport) {
     app.get('/user/login', function(req,res){
 
     });
-    /*
+
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/geek', // redirect back to the signup page if there is an error
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/geeks', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
-    }));*/
-    app.post('/signup', passport.authenticate('local-signup'));    
+    })); 
 
-    /*
-    app.get('/user/signup',function(req,res){
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/', // redirect to the secure profile section
+        failureRedirect : '/geeks', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 
-    });
-
-    app.get('/user/login',function(req,res){
-
-    });*/
 	// frontend routes =========================================================
 	// route to handle all angular requests
 	app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
 	});
 
+    app.get('/verify', isLoggedIn, function(req, res){
+        console.log('we ehre at all?');
+    });
+
 };
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
-
     // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
+    if (req.isAuthenticated()){
+        console.log('yes we are authenticated');
         return next();
-
+    }
+    else{
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    console.log('nope we arent authenticated');
+    var response ={
+        message : "NO"
+    };
+    res.send(response);
+    }
 }
