@@ -22,7 +22,7 @@ mongoose.connect(db.url, function(err) {
     }
 });
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport.js')(passport); // pass passport for configuration
 
 var port = process.env.PORT || 8080; // set our port
 // mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
