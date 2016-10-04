@@ -108,17 +108,46 @@ module.exports = function(app,passport) {
 
     });
 
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/', // redirect to the secure profile section
-        failureRedirect : '/geeks', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    })); 
+    app.post('/signup', function(req,res,next){ passport.authenticate('local-signup', function(err, user,info){
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (! user) {
+      return res.send({ success : false, message : 'authentication failed' });
+    }
+    // ***********************************************************************
+    // "Note that when using a custom callback, it becomes the application's
+    // responsibility to establish a session (by calling req.login()) and send
+    // a response."
+    // Source: http://passportjs.org/docs
+    // ***********************************************************************
+    req.login(user, loginErr => {
+      if (loginErr) {
+        return next(loginErr);
+      }
+      return res.send({ success : true, message : 'authentication succeeded' });
+    });      
+  })(req, res, next);
+});
 
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/', // redirect to the secure profile section
-        failureRedirect : '/geeks', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
+    app.post('/login', function(req, res, next) {
+        passport.authenticate('local-login', function(err, user, info) {
+        if (err) {
+          return next(err); // will generate a 500 error
+        }
+        // Generate a JSON response reflecting authentication status
+        if (! user) {
+          return res.send(401,{ success : false, message : 'authentication failed' });
+        }
+        req.login(user, function(err){
+          if(err){
+            return next(err);
+          }
+          return res.send({ success : true, message : 'authentication succeeded' });        
+        });
+      })(req, res, next);
+    });
 
 	// frontend routes =========================================================
 	// route to handle all angular requests

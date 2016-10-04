@@ -11,6 +11,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
 	
 	//add markers here in the function to hit API
+	$scope.errormessage = '';
 	$scope.currentPage = 0;
 	$scope.pageSize = 4; 
 	$scope.numberOfPages = function(){
@@ -68,6 +69,12 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	});	
 $scope.exit = function(){
 	var container = jQuery('.popup');
+	container.addClass('hide');
+  	jQuery('body').css('overflow', 'auto').off('touchmove');      
+}
+$scope.exitlogin = function(){
+	console.log('in the exitlogin');
+	var container = jQuery('.loginpopup');
 	container.addClass('hide');
   	jQuery('body').css('overflow', 'auto').off('touchmove');      
 }
@@ -339,14 +346,61 @@ $scope.exit = function(){
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.loginpopup').removeClass('hide');
+		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
+         e.preventDefault();
+        }); 		
+	}
+	$scope.user=function(arg){
+		var email = jQuery('#exampleInputEmail1').val();
+		var password = jQuery('#exampleInputPassword1').val();
+		console.log(email + password);
+		body = {
+			email: email,
+			password: password
+		};
+		console.log(arg);
+		if(arg == 'signup'){
+			$http.post('/signup',body)
+				.success(function(data){
+					console.log('Message back:', data);
+					if(data.message == 'authentication failed'){
+						jQuery('#errorText').innerHTML = data.message;
+						$scope.errormessage = 'Error: user may already exist';
+					}else{
+						console.log('SUCESS?');
+						$scope.errormessage = '';
+						$scope.exitlogin();
+
+					}
+				})
+				.error(function(data){
+					console.log('Error:' + data.message);
+					
+				});
+		}else if(arg == 'login'){
+			$http.post('/login',body)
+				.success(function(data){
+					console.log('Message back:', data);
+					if(data.message == 'authentication failed'){
+						jQuery('#errorText').innerHTML = data.message;
+						$scope.errormessage = 'Error: Probably wrong password';
+					}else{
+						console.log('SUCESS?');
+						$scope.errormessage = '';
+						$scope.exitlogin();
+
+					}					
+					
+				})
+				.error(function(data){
+						jQuery('#errorText').innerHTML = data.message;
+						$scope.errormessage = 'Error: Probably wrong password';
+				});			
+		}	
 	}
 	$scope.lightning = function(arg){
 		$scope.popupChallenge = $scope.dares[arg].description;
 		jQuery('.popup').removeClass('hide');
-		/*
-		jQuery('body').css('overflow','hidden');
-		jQuery('body').css('position','fixed');
-		*/
 		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
          e.preventDefault();
     });
