@@ -59,7 +59,16 @@ module.exports = function(app,passport) {
                 res.status(500).send(err);
             }else{
                 // console.log(chal);
-                chal.points = chal.points + 25; 
+                chal.points = chal.points + 25;
+                User.findById(req.user.id, function(err,us){
+                    us.points = us.points - 25;
+                    us.save(function(err,u){
+                        //if(err){
+                        //    res.status(500).send(err);
+                        //}
+                        //res.send(u);
+                    })
+                })                  
                 
                 chal.save(function(err, chal){
                     if(err){
@@ -78,7 +87,18 @@ module.exports = function(app,passport) {
                 res.status(500).send(err);
             }else{
                 
-                chal.points = chal.points - 25; 
+                chal.points = chal.points - 25;
+                console.log(req.user.id);
+                
+                User.findById(req.user.id, function(err,us){
+                    us.points = us.points - 25;
+                    us.save(function(err,u){
+                        //if(err){
+                        //    res.status(500).send(err);
+                        //}
+                        //res.send(u);
+                    })
+                }) 
                 chal.save(function(err, chal){
                     if(err){
                         res.status(500).send(err);
