@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 var Nerd = require('./models/Nerd.js');
 var Challenge = require('./models/Challenge.js');
+var User = require('./models/Users.js');
 
 module.exports = function(app,passport) {
 
@@ -102,6 +103,10 @@ module.exports = function(app,passport) {
             res.json(nerds); // return all nerds in JSON format
         });
     }); 
+
+    app.get('/user', function(req,res){
+
+    })
  
 
     app.get('/user/login', function(req,res){
@@ -126,12 +131,12 @@ module.exports = function(app,passport) {
       if (loginErr) {
         return next(loginErr);
       }
-      return res.send({ success : true, message : 'authentication succeeded' });
+      return res.send({ success : true, message : 'authentication succeeded', points: user.points });
     });      
   })(req, res, next);
 });
 
-    app.post('/login', function(req, res, next) {
+app.post('/login', function(req, res, next) {
         passport.authenticate('local-login', function(err, user, info) {
         if (err) {
           return next(err); // will generate a 500 error
@@ -144,7 +149,7 @@ module.exports = function(app,passport) {
           if(err){
             return next(err);
           }
-          return res.send({ success : true, message : 'authentication succeeded' });        
+          return res.send({ success : true, message : 'authentication succeeded', points: user.points });        
         });
       })(req, res, next);
     });
@@ -156,9 +161,10 @@ module.exports = function(app,passport) {
 	});
 
     app.post('/verify', isLoggedIn, function(req, res){
-        console.log('we ehre at all?');
+        console.log(req.user.points);
         response = {
-            message : "YES"
+            message : "YES",
+            points: req.user.points
         };
         res.send(response);
     });

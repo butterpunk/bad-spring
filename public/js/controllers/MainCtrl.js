@@ -17,10 +17,9 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 						console.log(isLogged);
 				}else{
 						console.log('were in the is logged in true block');
+						$scope.points = data.points
 						$scope.isLogged = true;
-
 				}
-				console.log($scope.isLogged);	
 
 			})
 			.error(function(data){
@@ -95,7 +94,8 @@ $scope.exitlogin = function(){
   	jQuery('body').css('overflow', 'auto').off('touchmove');      
 }
   // $scope.popupChallenge = '';
-  $scope.points = 100;
+  console.log('')
+  //$scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
 
@@ -366,6 +366,10 @@ $scope.exitlogin = function(){
          e.preventDefault();
         }); 		
 	}
+	/*
+	$scope.login - function(){
+		$scope.loginPopup();
+	}*/
 	$scope.user=function(arg){
 		var email = jQuery('#exampleInputEmail1').val();
 		var password = jQuery('#exampleInputPassword1').val();
@@ -383,6 +387,7 @@ $scope.exitlogin = function(){
 						jQuery('#errorText').innerHTML = data.message;
 						$scope.errormessage = 'Error: user may already exist';
 					}else{
+						$scope.points = data.points;
 						$scope.isLogged = true;
 						console.log('SUCESS?');
 						$scope.errormessage = '';
@@ -402,6 +407,7 @@ $scope.exitlogin = function(){
 						jQuery('#errorText').innerHTML = data.message;
 						$scope.errormessage = 'Error: Probably wrong password';
 					}else{
+						$scope.points = data.points;
 						$scope.isLogged = true;
 						console.log('SUCESS?');
 						$scope.errormessage = '';

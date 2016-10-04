@@ -5,7 +5,7 @@
 	</div>
 	<div class="right-stuff col-xs-12 col-sm-5">
 
-		<a ng-show="!isLogged" ng-click="login();"><h6>Login/Signup</h6></a>
+		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>Login/Signup</h6></a>
 		<h6 ng-show="isLogged" id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6> 
 		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
