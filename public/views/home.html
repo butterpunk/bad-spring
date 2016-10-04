@@ -4,7 +4,9 @@
 		<h6>CITY</h6>
 	</div>
 	<div class="right-stuff col-xs-12 col-sm-5">
-		<h6 id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6>
+
+		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>Login/Signup</h6></a>
+		<h6 ng-show="isLogged" id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6> 
 		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
 	</div>	
@@ -80,6 +82,22 @@
 	<h5>This lightning bolt will fill out yellow when we've confirmed that you've done this.</h5>
 	<!-- <h5> {{popupChallenge}}</h5> 
  -->	<h5>To prove it send me a photo: blakebutterworth@gmail.com, or instagram: @butterpunk</h5>
+</div>
+<div class="loginpopup hide">
+	<h5>You must Be logged in to do this</h5>
+		<h2>SIGNUP</h2>
+		<div class="form-group">
+		    <label for="exampleInputEmail1">Email address</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		  </div>
+		  <h6 id="errorText" class="text-muted">{{errormessage}}</h6>
+	  <a ng-click="user('signup');"><button class="btn-primary">Sign Up</button></a><a ng-click="user('login');"><button class="btn-primary">Login</button></a>
+
 </div>
 <!-- <div class="white-box">
 </div>	 -->	
