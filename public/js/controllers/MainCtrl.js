@@ -196,7 +196,15 @@ $scope.exitlogout = function(){
 			$scope.front = 1;
 		    $scope.marker = [];	
 		angular.forEach($scope.dares,function(value,key){
-			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+			$scope.marker.push({
+				coords: {
+					latitude: value.lat, 
+					longitude: value.long 
+				}, 
+				id: key, 
+				options: {icon: '../assets/gold_bolt.png'}, 
+
+			})
 		});
 			angular.forEach(jQuery('.menu-item h6'),function(value,key){
 				angular.element(value).toggleClass('strike');
@@ -206,7 +214,12 @@ $scope.exitlogout = function(){
 	}
 	$scope.map = {
 	  				center: {latitude: 29.960126, longitude: -90.033251 }, 
-	  				zoom: 13       
+	  				zoom: 13,
+	  				event: {
+						click: function(marker){
+						console.log('GETTING MARKER PUSHED', marker);
+						}
+					}			       
 	      		};
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   	$scope.options = {
