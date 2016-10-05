@@ -9,12 +9,13 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	    });
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
+	$scope.isLogged = false;
 	$http.post('/verify')
 			.success(function(data){
-				console.log('ARE WE IN THE VERIFY BLOCK');
+				console.log(data.message);
 				if(data.message == 'NO'){
+						console.log('were in the is logged false block');
 						$scope.isLogged = false; 
-						console.log(isLogged);
 				}else{
 						console.log('were in the is logged in true block');
 						$scope.points = data.points
@@ -70,6 +71,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	jQuery(document).mouseup(function (e)
 	{
     var container = jQuery('.popup');
+    var containerlogin = jQuery('.loginpopup');
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -77,6 +79,14 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
         container.addClass('hide');
   		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
+    if (!containerlogin.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        containerlogin.addClass('hide');
+  		jQuery('body').css('overflow', 'auto').off('touchmove');      
+    }
+
+
 	});	
 $scope.exit = function(){
 	var container = jQuery('.popup');
@@ -305,58 +315,65 @@ $scope.exitlogin = function(){
 	}
 
 	$scope.upVote = function(arg){
-		if($scope.points - 25 >= 0){
-			$scope.points = $scope.points - 25; 		
-		
-		$http.defaults.headers.post["Content-Type"] = "application/json";
-		body = {'id':$scope.all[arg]._id};
-		$http.post('/api/challenges/upvote',body)
-			.success(function(data){
-				if(data.message == 'NO'){
-					$scope.loginPopup();
-				}else{	
-				console.log(data.points);
-				$scope.all[arg].points=data.points;
-				}
-			})
-			.error(function(data){
-				console.log('Error: ' + data);
-			});
-		if($scope.points == 0){
-			jQuery('#pointsRemaining').addClass('red');
-		}			 
+		if($scope.isLogged == false){
+			$scope.loginPopup();
 		}else{
-			console.log('bong');
-			jQuery('#pointsRemaining').addClass('red');		
-		} 
-	}
-	$scope.downVote = function(arg){
-		if($scope.points - 25 >= 0){
-			$scope.points = $scope.points - 25; 
-			//actually modify the DB
+			if($scope.points - 25 >= 0){
+				$scope.points = $scope.points - 25; 		
+			
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 			body = {'id':$scope.all[arg]._id};
-			$http.post('/api/challenges/downvote',body)
+			$http.post('/api/challenges/upvote',body)
 				.success(function(data){
-					console.log(data.message);
 					if(data.message == 'NO'){
 						$scope.loginPopup();
-					}else{
+					}else{	
 					console.log(data.points);
 					$scope.all[arg].points=data.points;
 					}
 				})
 				.error(function(data){
 					console.log('Error: ' + data);
-				});			
-				if($scope.points == 0){
-					jQuery('#pointsRemaining').addClass('red');
-				}			 
+				});
+			if($scope.points == 0){
+				jQuery('#pointsRemaining').addClass('red');
+			}			 
+			}else{
+				console.log('bong');
+				jQuery('#pointsRemaining').addClass('red');		
+			}
+		}	 
+	}
+	$scope.downVote = function(arg){
+		if($scope.isLogged == false){
+			$scope.loginPopup();
 		}else{
-			console.log('bong');
-			jQuery('#pointsRemaining').addClass('red');		
-		} 
-
+			if($scope.points - 25 >= 0){
+				$scope.points = $scope.points - 25; 
+				//actually modify the DB
+				$http.defaults.headers.post["Content-Type"] = "application/json";
+				body = {'id':$scope.all[arg]._id};
+				$http.post('/api/challenges/downvote',body)
+					.success(function(data){
+						console.log(data.message);
+						if(data.message == 'NO'){
+							$scope.loginPopup();
+						}else{
+						console.log(data.points);
+						$scope.all[arg].points=data.points;
+						}
+					})
+					.error(function(data){
+						console.log('Error: ' + data);
+					});			
+					if($scope.points == 0){
+						jQuery('#pointsRemaining').addClass('red');
+					}			 
+			}else{
+				console.log('bong');
+				jQuery('#pointsRemaining').addClass('red');		
+			} 
+		}	
 	}
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
