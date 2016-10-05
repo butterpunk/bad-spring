@@ -9,6 +9,7 @@
 		<h6 ng-show="isLogged" id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6> 
 		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
+		<a ng-show="isLogged" ng-click="logoutPopup();"><h6>(Logout)</h6></a>
 	</div>	
 </div>	
 <div class="purple-container row">
@@ -103,6 +104,15 @@
 		  <h6 id="errorText" class="text-muted">{{errormessage}}</h6>
 	  <a ng-click="user('signup');"><button class="btn-primary">Sign Up</button></a><a ng-click="user('login');"><button class="btn-primary">Login</button></a>
 
+</div>
+<div class="logoutpopup hide">
+	<div class="exit-container">
+		<a ng-click="exitlogout();">
+			<img src="../assets/exit-icon.png"/>
+		</a>
+	</div>
+	<h5>Are you sure you want to Logout?</h5>
+	  <a ng-click="user('logout');"><button class="btn-primary">Logout</button></a><a ng-click="exitlogout();"><button class="btn-primary">Cancel</button></a>
 </div>
 <!-- <div class="white-box">
 </div>	 -->	
