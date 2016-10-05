@@ -72,6 +72,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	{
     var container = jQuery('.popup');
     var containerlogin = jQuery('.loginpopup');
+    var containerlogout = jQuery('.logoutpopup');
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -83,6 +84,12 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
         && containerlogin.has(e.target).length === 0) // ... nor a descendant of the container
     {
         containerlogin.addClass('hide');
+  		jQuery('body').css('overflow', 'auto').off('touchmove');      
+    }
+    if (!containerlogout.is(e.target) // if the target of the click isn't the container...
+        && containerlogout.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        containerlogout.addClass('hide');
   		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
 
@@ -98,6 +105,12 @@ $scope.exitlogin = function(){
 	var container = jQuery('.loginpopup');
 	container.addClass('hide');
   	jQuery('body').css('overflow', 'auto').off('touchmove');      
+}
+$scope.exitlogout = function(){
+	console.log('in the exitlogout');
+	var container = jQuery('.logoutpopup');
+	container.addClass('hide');
+  	jQuery('body').css('overflow', 'auto').off('touchmove');
 }
   // $scope.popupChallenge = '';
   console.log('')
@@ -391,15 +404,7 @@ $scope.exitlogin = function(){
          e.preventDefault();
         }); 		
 	}
-	$scope.exitlogout = function(){
-		console.log('exiting logout');
-		jQuery('.logoutpopup').addClass('hide');
-	}
-	//$scope.exitlogout();
-	/*
-	$scope.login - function(){
-		$scope.loginPopup();
-	}*/
+
 	$scope.user=function(arg){
 		var email = jQuery('#exampleInputEmail1').val();
 		var password = jQuery('#exampleInputPassword1').val();
