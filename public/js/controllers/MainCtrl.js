@@ -70,6 +70,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 	jQuery(document).mouseup(function (e)
 	{
     var container = jQuery('.popup');
+    var containerlogin = jQuery('.loginpopup');
 
     if (!container.is(e.target) // if the target of the click isn't the container...
         && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -77,6 +78,14 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
         container.addClass('hide');
   		jQuery('body').css('overflow', 'auto').off('touchmove');      
     }
+    if (!containerlogin.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        containerlogin.addClass('hide');
+  		jQuery('body').css('overflow', 'auto').off('touchmove');      
+    }
+
+
 	});	
 $scope.exit = function(){
 	var container = jQuery('.popup');
