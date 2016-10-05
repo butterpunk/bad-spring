@@ -51,10 +51,6 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		 uiGmapGoogleMapApi.then(function(marker) {
 		  	console.log(marker);
 		  });
-		$scope.map = {
-	  					center: {latitude: 29.960126, longitude: -90.033251 }, 
-	  					zoom: 13       
-	      			};
 
     });
 
@@ -178,7 +174,10 @@ $scope.exitlogin = function(){
 			});			
 		}
 	}
-
+		$scope.map = {
+	  					center: {latitude: 29.960126, longitude: -90.033251 }, 
+	  					zoom: 13       
+	      			};
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   	$scope.options = {
 	  	scrollwheel: false, 
