@@ -132,6 +132,12 @@ module.exports = function(app,passport) {
     app.get('/user/login', function(req,res){
 
     });
+    //apparently its this easy with passport! http://passportjs.org/docs
+    app.get('/logout', function(req, res){
+        console.log("passport logging out")
+        req.logout();
+        res.redirect('/');
+    });
 
     app.post('/signup', function(req,res,next){ passport.authenticate('local-signup', function(err, user,info){
     if (err) {

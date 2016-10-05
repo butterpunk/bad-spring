@@ -375,6 +375,7 @@ $scope.exitlogin = function(){
 			} 
 		}	
 	}
+	//login and logout popups
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.loginpopup').removeClass('hide');
@@ -382,6 +383,19 @@ $scope.exitlogin = function(){
          e.preventDefault();
         }); 		
 	}
+
+	$scope.logoutPopup = function(){
+		console.log('CREATE POPUP HERE');
+		jQuery('.logoutpopup').removeClass('hide');
+		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
+         e.preventDefault();
+        }); 		
+	}
+	$scope.exitlogout = function(){
+		console.log('exiting logout');
+		jQuery('.logoutpopup').addClass('hide');
+	}
+	//$scope.exitlogout();
 	/*
 	$scope.login - function(){
 		$scope.loginPopup();
@@ -437,6 +451,12 @@ $scope.exitlogin = function(){
 						$scope.errormessage = 'Error: Probably wrong password';
 				});			
 		}	
+		else if(arg == 'logout'){
+			console.log("logging out!");
+			$http.get('/logout');
+			$scope.isLogged = false;
+			$scope.exitlogout();
+		}
 	}
 	$scope.lightning = function(arg){
 		$scope.popupChallenge = $scope.dares[arg].description;
