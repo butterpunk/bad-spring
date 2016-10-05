@@ -113,7 +113,6 @@ $scope.exitlogout = function(){
   	jQuery('body').css('overflow', 'auto').off('touchmove');
 }
   // $scope.popupChallenge = '';
-  console.log('')
   //$scope.points = 100;
   $scope.front = 1; 
   $log.currentLevel = $log.LEVELS.debug;
@@ -184,6 +183,10 @@ $scope.exitlogout = function(){
 		if(arg == 'wknd' && $scope.front == 1){
 			$scope.dares = $scope.weekend;
 			$scope.front = 0; 
+		$scope.marker = [];	
+		angular.forEach($scope.dares,function(value,key){
+			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+		});
 			angular.forEach(jQuery('.menu-item h6'),function(value,key){
 				angular.element(value).toggleClass('strike');
 				angular.element(value).toggleClass('non-strike');
@@ -191,16 +194,20 @@ $scope.exitlogout = function(){
 		}else if(arg == 'all' && $scope.front != 1 ){
 			$scope.dares = $scope.all;
 			$scope.front = 1;
+		    $scope.marker = [];	
+		angular.forEach($scope.dares,function(value,key){
+			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+		});
 			angular.forEach(jQuery('.menu-item h6'),function(value,key){
 				angular.element(value).toggleClass('strike');
 				angular.element(value).toggleClass('non-strike');
 			});			
 		}
 	}
-		$scope.map = {
-	  					center: {latitude: 29.960126, longitude: -90.033251 }, 
-	  					zoom: 13       
-	      			};
+	$scope.map = {
+	  				center: {latitude: 29.960126, longitude: -90.033251 }, 
+	  				zoom: 13       
+	      		};
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   	$scope.options = {
 	  	scrollwheel: false, 
