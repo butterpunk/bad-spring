@@ -36,7 +36,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 
 	$scope.all = [];
 	$scope.marker= [];
-
+/*placing this in Change Dares function
 	Nerd.get().then(function(nerds) {
       //  console.log(nerds);
         angular.forEach(nerds.data,function(value,key){
@@ -53,7 +53,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 		  	console.log(marker);
 		  });
 
-    });
+    });*/
 
 	jQuery( document ).ready(function() {
 		console.log('here');
@@ -179,8 +179,12 @@ $scope.exitlogout = function(){
 		long: -90.117925					
 	},]
 
+	var loaded_all_dares = false;
+
+	//Change Dares AND Markers here
 	$scope.dares = $scope.all;
 	$scope.changeDare = function(arg){
+		$scope.marker= [];
 		if(arg == 'wknd' && $scope.front == 1){
 			$scope.dares = $scope.weekend;
 			$scope.front = 0; 
@@ -188,8 +192,36 @@ $scope.exitlogout = function(){
 				angular.element(value).toggleClass('strike');
 				angular.element(value).toggleClass('non-strike');
 			});
+			angular.forEach($scope.weekend,function(value,key){
+				$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+			});
 		}else if(arg == 'all' && $scope.front != 1 ){
+			if(loaded_all_dares == false){
+				console.log("getting all nerds");
+				Nerd.get().then(function(nerds) {
+			        angular.forEach(nerds.data,function(value,key){
+			        	if(value.place != ""){
+			        		$scope.all.push(value);
+			        	}
+			        });
+			 //       console.log($scope.all);
+					angular.forEach($scope.all,function(value,key){
+						$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+					});
+				//	console.log($scope.marker);
+					 uiGmapGoogleMapApi.then(function(marker) {
+					  	console.log(marker);
+					  });
+
+			    });
+
+			}
+			 loaded_all_dares = true
 			$scope.dares = $scope.all;
+			//update markers
+			angular.forEach($scope.all,function(value,key){
+				$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+			});
 			$scope.front = 1;
 			angular.forEach(jQuery('.menu-item h6'),function(value,key){
 				angular.element(value).toggleClass('strike');
@@ -388,7 +420,6 @@ $scope.exitlogout = function(){
 			} 
 		}	
 	}
-	//login and logout popups
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.loginpopup').removeClass('hide');
@@ -396,7 +427,6 @@ $scope.exitlogout = function(){
          e.preventDefault();
         }); 		
 	}
-
 	$scope.logoutPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.logoutpopup').removeClass('hide');
@@ -455,13 +485,13 @@ $scope.exitlogout = function(){
 						jQuery('#errorText').innerHTML = data.message;
 						$scope.errormessage = 'Error: Probably wrong password';
 				});			
-		}	
+		}
 		else if(arg == 'logout'){
 			console.log("logging out!");
 			$http.get('/logout');
 			$scope.isLogged = false;
 			$scope.exitlogout();
-		}
+		}	
 	}
 	$scope.lightning = function(arg){
 		$scope.popupChallenge = $scope.dares[arg].description;
