@@ -20,6 +20,10 @@ a:hover{
 .gif-container{
 	top: 190px;
 }
+.otherNav{
+	position: relative;
+	top: 10px;
+}
 .purple-container{
 	padding-top: 150px;
 	/*background-color: #7A7AA5;*/
@@ -312,6 +316,17 @@ body {
 		width: 80%;
 	}
 }
+.desktop-nix{
+	display: none;
+}
+.nav-mobile{
+	float: right;
+}
+.btn-info{
+	background-color: white;
+	color: black;
+	border-color: black;
+}
 @media only screen and (max-width : 510px) {
 	.popup{
 		width: 100%;
@@ -322,6 +337,9 @@ body {
 	#cityMission{
 		margin: auto;
 		text-align: center;
+	}
+	.desktop-nix{
+		display: inline-block;
 	}
 	.mobile-nix{
 		display: none;
