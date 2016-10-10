@@ -1,15 +1,17 @@
-<div class="navCustom hide">
+<div class="navCustom">
 	<div class="mobile-nix col-xs-2 col-sm-7">	
 		<h6>BAD</h6>
 		<h6>CITY</h6>
 	</div>
 	<div class="right-stuff col-xs-12 col-sm-5">
 
-		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>Login/Signup</h6></a>
+		
 		<h6 ng-show="isLogged" id="pointsRemaining"><span class="mobile-nix">Your Points:</span>{{points}}</h6> 
-		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">Always</h6></a>
-		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">This Weekend</h6></a>
+		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">ALWAYS</h6></a>
+		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">THIS WEEKEND</h6></a>
 		<a ng-show="isLogged" ng-click="logoutPopup();"><h6>(Logout)</h6></a>
+		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>LOGIN</h6></a>
+		<a  ng-show="!isLogged" ng-click="loginPopup();"><h6 id="signupbutton">JOIN</h6></a>
 	</div>	
 </div>	
 <div class="purple-container row">
@@ -31,6 +33,12 @@
 	</div>			
 </div>	
 <div class="challenges row">
+	<h1>HOW IT WORKS</h1>
+	<div class="DARES">
+	<div class="how-it-works-container">
+		<h6>When you signup you get 100 points. Use these points to up or down vote to incentivize/decentivize the community to complete a particular challenge. Complete a challenge and you get the points associated with it.</h6>
+	</div>
+	</div>
 	<h1>CHALLENGES</h1>	
 	<div class="DARES">
 		<div class="dare-container" ng-repeat="dare in dares">

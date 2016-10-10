@@ -57,7 +57,8 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 
 	jQuery( document ).ready(function() {
 		console.log('here');
-	});	
+	});
+	/*	
 	jQuery(window).scroll(function() {
     var height = jQuery(window).scrollTop();
 
@@ -67,7 +68,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     }else{
     	jQuery('.navCustom').addClass('hide');
     }
-	});
+	}); */
 	jQuery(document).mouseup(function (e)
 	{
     var container = jQuery('.popup');
