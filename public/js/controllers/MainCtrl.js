@@ -217,8 +217,13 @@ $scope.exitlogout = function(){
 	  				center: {latitude: 29.960126, longitude: -90.033251 }, 
 	  				zoom: 13,
 	  				event: {
-						click: function(marker){
-						console.log('GETTING MARKER PUSHED', marker);
+						click: function(marker,eventName, model){
+						$scope.infoWindowLocation = $scope.dares[model.idKey].place;
+						$scope.infoWindowPoints = 	$scope.dares[model.idKey].points;
+						console.log($scope.dares[model.idKey].points);
+						jQuery('.mapPopUp').removeClass('hide');	
+						console.log('GETTING MARKER PUSHED', $scope.dares[model.idKey]);
+
 						}
 					}			       
 	      		};

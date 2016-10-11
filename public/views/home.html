@@ -140,7 +140,12 @@
 	  <a ng-click="user('logout');"><button class="btn-primary">Logout</button></a><a ng-click="exitlogout();"><button class="btn-primary">Cancel</button></a>
 </div>
 <!-- <div class="white-box">
-</div>	 -->	
+</div>	 -->
+
+<div class="mapPopUp hide">
+	<h6><span class="underLine">Location:</span>{{infoWindowLocation}}</h6>
+	<h6><span class="underLine">Points:</span>{{infoWindowPoints}}</h6>
+</div>	
 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
         <ui-gmap-marker 
         	ng-repeat="mark in marker"
