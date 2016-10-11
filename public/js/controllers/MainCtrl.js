@@ -57,7 +57,8 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
 
 	jQuery( document ).ready(function() {
 		console.log('here');
-	});	
+	});
+	/*	
 	jQuery(window).scroll(function() {
     var height = jQuery(window).scrollTop();
 
@@ -67,7 +68,7 @@ angular.module('MainCtrl', ['uiGmapgoogle-maps'])
     }else{
     	jQuery('.navCustom').addClass('hide');
     }
-	});
+	}); */
 	jQuery(document).mouseup(function (e)
 	{
     var container = jQuery('.popup');
@@ -196,7 +197,15 @@ $scope.exitlogout = function(){
 			$scope.front = 1;
 		    $scope.marker = [];	
 		angular.forEach($scope.dares,function(value,key){
-			$scope.marker.push({coords: {latitude: value.lat, longitude: value.long }, id: key, options: {icon: '../assets/gold_bolt.png'} })
+			$scope.marker.push({
+				coords: {
+					latitude: value.lat, 
+					longitude: value.long 
+				}, 
+				id: key, 
+				options: {icon: '../assets/gold_bolt.png'}, 
+
+			})
 		});
 			angular.forEach(jQuery('.menu-item h6'),function(value,key){
 				angular.element(value).toggleClass('strike');
@@ -206,7 +215,17 @@ $scope.exitlogout = function(){
 	}
 	$scope.map = {
 	  				center: {latitude: 29.960126, longitude: -90.033251 }, 
-	  				zoom: 13       
+	  				zoom: 13,
+	  				event: {
+						click: function(marker,eventName, model){
+						$scope.infoWindowLocation = $scope.dares[model.idKey].place;
+						$scope.infoWindowPoints = 	$scope.dares[model.idKey].points;
+						console.log($scope.dares[model.idKey].points);
+						jQuery('.mapPopUp').removeClass('hide');	
+						console.log('GETTING MARKER PUSHED', $scope.dares[model.idKey]);
+
+						}
+					}			       
 	      		};
   // $scope.marker = {coords: {latitude: 29.960126, longitude: -90.033251 }, id: 1, options: {icon: '../assets/gold_bolt.png'} };
   	$scope.options = {
@@ -396,6 +415,15 @@ $scope.exitlogout = function(){
 		}	
 	}
 	//login and logout popups
+	$scope.displaysubNav = function(){
+		jQuery('.subNavMobile').removeClass('hide');
+		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
+         e.preventDefault();
+        }); 
+	}
+	$scope.removesubNav = function(){
+		jQuery('.subNavMobile').addClass('hide');
+	}
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.loginpopup').removeClass('hide');
