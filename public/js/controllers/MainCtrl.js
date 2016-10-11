@@ -410,6 +410,15 @@ $scope.exitlogout = function(){
 		}	
 	}
 	//login and logout popups
+	$scope.displaysubNav = function(){
+		jQuery('.subNavMobile').removeClass('hide');
+		jQuery('body').css('overflow', 'hidden').on('touchmove', function(e) {
+         e.preventDefault();
+        }); 
+	}
+	$scope.removesubNav = function(){
+		jQuery('.subNavMobile').addClass('hide');
+	}
 	$scope.loginPopup = function(){
 		console.log('CREATE POPUP HERE');
 		jQuery('.loginpopup').removeClass('hide');

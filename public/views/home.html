@@ -14,7 +14,7 @@
 			</div>
 			<div class="nav-mobile" style="display: inline-block;">
 				<a  ng-show="!isLogged" ng-click="loginPopup();"><h6 id="signupbutton">JOIN</h6></a>
-				<a href="#" class="btn btn-info btn-sm desktop-nix">
+				<a ng-click="displaysubNav();" class="btn btn-info btn-sm desktop-nix">
 	    			<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</a>
 			</div>
@@ -45,7 +45,7 @@
 		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">THIS WEEKEND</h6></a>
 		<a ng-show="isLogged" ng-click="logoutPopup();"><h6>(Logout)</h6></a>
 		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>LOGIN</h6></a>
-		<a href="#" class="btn btn-info btn-sm desktop-nix">
+		<a ng-click="removesubNav();" class="btn btn-info btn-sm desktop-nix">
 	    	<span class="glyphicon glyphicon-remove"></span>
 		</a>
 	</div>
