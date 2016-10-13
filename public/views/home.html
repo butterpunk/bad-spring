@@ -7,10 +7,10 @@
 			<div style="float: right;">
 				<div class="otherNav" style="display: inline-block;">
 					<h6 class="mobile-nix" ng-show="isLogged" id="pointsRemaining"><span>Your Points:</span>{{points}}</h6> 
-					<a ng-click="changeDare('all');" class="menu-item mobile-nix"><h6 class="strike">ALWAYS</h6></a>
-					<a ng-click="changeDare('wknd');" class="menu-item mobile-nix"><h6 class="non-strike">THIS WEEKEND</h6></a>
-					<a ng-show="isLogged" ng-click="logoutPopup();" class="mobile-nix"><h6>(Logout)</h6></a>
-					<a ng-show="!isLogged" ng-click="loginPopup();" class="mobile-nix"><h6>LOGIN</h6></a>
+					<a ng-click="changeDare('all');" class="menu-item mobile-nix" analytics-on="click" analytics-event="All" analytics-category="Content Actions"><h6 class="strike">ALWAYS</h6></a>
+					<a ng-click="changeDare('wknd');" class="menu-item mobile-nix" analytics-on="click" analytics-event="Wknd" analytics-category="Content Actions"><h6 class="non-strike">THIS WEEKEND</h6></a>
+					<a ng-show="isLogged" ng-click="logoutPopup();" class="mobile-nix" analytics-on="click" analytics-event="Logout" analytics-category="Content Actions"><h6>(Logout)</h6></a>
+					<a ng-show="!isLogged" ng-click="loginPopup();" class="mobile-nix"  analytics-on="click" analytics-event="Login" analytics-category="Content Actions"><h6>LOGIN</h6></a>
 			</div>
 			<div class="nav-mobile" style="display: inline-block;">
 				<a  ng-show="!isLogged" ng-click="loginPopup();"><h6 id="signupbutton">JOIN</h6></a>
@@ -41,10 +41,10 @@
 </div>	
 	<div class="hide subNavMobile">
 		<h6 ng-show="isLogged" id="pointsRemaining"><span>Your Points:</span>{{points}}</h6> 
-		<a ng-click="changeDare('all');" class="menu-item"><h6 class="strike">ALWAYS</h6></a>
-		<a ng-click="changeDare('wknd');" class="menu-item"><h6 class="non-strike">THIS WEEKEND</h6></a>
-		<a ng-show="isLogged" ng-click="logoutPopup();"><h6>(Logout)</h6></a>
-		<a ng-show="!isLogged" ng-click="loginPopup();"><h6>LOGIN</h6></a>
+		<a ng-click="changeDare('all');" class="menu-item" analytics-on="click" analytics-event="PhoneAll" analytics-category="Content Actions"><h6 class="strike">ALWAYS</h6></a>
+		<a ng-click="changeDare('wknd');" class="menu-item" analytics-on="click" analytics-event="PhoneWknd" analytics-category="Content Actions"><h6 class="non-strike">THIS WEEKEND</h6></a>
+		<a ng-show="isLogged" ng-click="logoutPopup();" analytics-on="click" analytics-event="PhoneLogout" analytics-category="Content Actions"><h6>(Logout)</h6></a>
+		<a ng-show="!isLogged" ng-click="loginPopup();" analytics-on="click" analytics-event="PhoneLogin" analytics-category="Content Actions"><h6>LOGIN</h6></a>
 		<a ng-click="removesubNav();" class="btn btn-info btn-sm desktop-nix">
 	    	<span class="glyphicon glyphicon-remove"></span>
 		</a>
@@ -72,14 +72,14 @@
 			</div>
 				<div class="row button-dare">
 					<div class="arrow-container">
-						<a ng-click="upVote($index);">
+						<a ng-click="upVote($index);" analytics-on="click" analytics-event="UpVote" analytics-category="Content Actions">
 							<img class="img-responsive primary" src="../assets/up.png"/>
 							<img class="img-responsive hover" src="../assets/hoverup.png"/>	
 						</a>
 					</div>
 					<a ng-click="downVote($index);">
 					<div class="arrow-container">	
-						<a  class="arrow-hover" ng-click="downVote($index);">
+						<a  class="arrow-hover" ng-click="downVote($index);" analytics-on="click" analytics-event="DownVote" analytics-category="Content Actions">
 							<img class="img-responsive primary" src="../assets/down.png"/>
 							<img class="img-responsive hover" src="../assets/hoverdown.png"/>
 						</a>
@@ -87,7 +87,7 @@
 					</a>
 					<a ng-click="lightning($index);">	
 					<div class="arrow-container lightning-container">	
-						<a class="arrow-hover" ng-click="lightning($index);">
+						<a class="arrow-hover" ng-click="lightning($index);" analytics-on="click" analytics-event="ChlngCmplt" analytics-category="Content Actions">
 							<img class="img-responsive primary" src="../assets/flash-lightning-bolt.png"/>
 							<img class="img-responsive hover" src="../assets/hoverbolt.png"/>							
 						</a>
@@ -127,7 +127,7 @@
 		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		  </div>
 		  <h6 id="errorText" class="text-muted">{{errormessage}}</h6>
-	  <a ng-click="user('signup');"><button class="btn-primary">Sign Up</button></a><a ng-click="user('login');"><button class="btn-primary">Login</button></a>
+	  <a ng-click="user('signup');" analytics-on="click" analytics-event="Singup" analytics-category="Content Actions"><button class="btn-primary">Sign Up</button></a><a ng-click="user('login');" analytics-on="click" analytics-event="PassportLogin" analytics-category="Content Actions"><button class="btn-primary">Login</button></a>
 
 </div>
 <div class="logoutpopup hide">
