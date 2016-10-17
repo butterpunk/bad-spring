@@ -321,6 +321,12 @@ body {
 	padding-left: 8px;
 	border-radius: 5px;
 }
+.logbutton{
+	width: 60px;
+	display: inline-block;
+	margin-left: 3px;
+	margin-right: 3px;
+}
 @media all and (min-width: 900px) {
 .arrow-hover:hover .primary{
 	display: none;
@@ -354,6 +360,9 @@ body {
 }
 @media only screen and (max-width : 510px) {
 	.popup{
+		width: 100%;
+	}
+	.loginpopup{
 		width: 100%;
 	}
 	.logo-tagline-container {
