@@ -379,6 +379,7 @@ body {
 	#cityMission{
 		margin: auto;
 		text-align: center;
+		padding-bottom: 20px;
 	}
 	.desktop-nix{
 		display: inline-block;
