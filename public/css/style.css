@@ -327,6 +327,11 @@ body {
 	margin-left: 3px;
 	margin-right: 3px;
 }
+.how-it-works-container{
+	width: 60%;
+	margin: auto;
+	margin-bottom: 100px;
+}
 @media all and (min-width: 900px) {
 .arrow-hover:hover .primary{
 	display: none;
@@ -359,6 +364,9 @@ body {
 	border-color: black;
 }
 @media only screen and (max-width : 510px) {
+	.how-it-works-container{
+		width: 100%;
+	}
 	.popup{
 		width: 100%;
 	}
