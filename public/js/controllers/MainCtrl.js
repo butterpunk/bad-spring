@@ -121,9 +121,9 @@ $scope.exitlogout = function(){
 
 	$scope.date = 'August 19, 2016';
 	$scope.weekend=[{
-		place: 'Tipitinas',
+		place: 'Community Records Fest',
 		points: 75,
-		description: 'Alexis of Alexis and the Samauri covers the whole Little Jagged Pill Album',
+		description: 'Go!',
 		lat: 29.9279,
 		long: -90.1279
 	},{
