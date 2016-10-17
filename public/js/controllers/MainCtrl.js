@@ -1,4 +1,4 @@
-angular.module('MainCtrl', ['uiGmapgoogle-maps'])
+ angular.module('MainCtrl', ['uiGmapgoogle-maps','angulartics','angulartics.google.analytics'])
 .config(
 	['$provide', 'nemSimpleLoggerProvider', 'uiGmapGoogleMapApiProvider', function($provide, nemSimpleLoggerProvider, uiGmapGoogleMapApiProvider) {
 		$provide.decorator.apply(null, nemSimpleLoggerProvider.decorator);
