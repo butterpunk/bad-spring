@@ -16,12 +16,7 @@ module.exports = function(app,passport) {
 	// authentication routes
     // sample api route
         /* At the top, with other redirect methods before other routes */
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://www.bad-city.co'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
+
 
 
     app.post('/api/challenges',function(req,res){
