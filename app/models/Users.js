@@ -5,6 +5,7 @@ var userSchema = mongoose.Schema({
 	email: {type : String, default: ''},
 	password: {type : String, default: ''},
 	points: {type: Number, default: '100'}	
+	challenges : [Number]
 });
 
 // methods ======================

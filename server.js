@@ -24,12 +24,13 @@ mongoose.connect(db.url, function(err) {
 
 require('./config/passport.js')(passport); // pass passport for configuration
 
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://www.bad-city.co'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
+
+// app.get('*',function(req,res,next){
+//   if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://www.bad-city.co'+req.url)
+//   else
+//     next() /* Continue to other routes if we're not redirecting */
+// })
 
 
 var port = process.env.PORT || 8080; // set our port
