@@ -127,9 +127,33 @@ module.exports = function(app,passport) {
     }); 
 
     app.get('/user', function(req,res){
+        User.find(function(err, nerds) {
 
-    })
- 
+            console.log('here');
+
+            if (err)
+                res.send(err);
+
+            res.json(nerds); // return all nerds in JSON format
+        });
+    });
+    
+    app.post('/completed', function (req,res){
+        User.findById(req.body.userId, function(err, us){
+            Challenge.findById(req.body.challengeId, function(err,chal){
+                us.points = us.points + chal.points; 
+                us.challenges.push(req.body.challengeId);
+                us.save(function(err, chal){
+                    if(err){
+                            res.status(500).send(err);
+                    }
+                    res.send(us);
+                });
+            });
+
+        });
+
+    });
 
     app.get('/user/login', function(req,res){
 
@@ -177,7 +201,7 @@ app.post('/login', function(req, res, next) {
           if(err){
             return next(err);
           }
-          return res.send({ success : true, message : 'authentication succeeded', points: user.points });        
+          return res.send({ success : true, message : 'authentication succeeded', points: user.points, challenges: user.challenges });        
         });
       })(req, res, next);
     });
@@ -193,7 +217,8 @@ app.post('/login', function(req, res, next) {
         console.log(req.user.points);
         response = {
             message : "YES",
-            points: req.user.points
+            points: req.user.points,
+            challenge: req.user.challenges
         };
         res.send(response);
     });
