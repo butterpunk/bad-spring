@@ -121,15 +121,15 @@ $scope.exitlogout = function(){
 
 	$scope.date = 'August 19, 2016';
 	$scope.weekend=[{
-		place: 'Tipitinas',
+		place: 'Community Records Fest',
 		points: 75,
-		description: 'Alexis of Alexis and the Samauri covers the whole Little Jagged Pill Album',
+		description: 'Go! Take a photo with the band, Pope',
 		lat: 29.9279,
 		long: -90.1279
 	},{
-		place: 'Art for Artsake',
+		place: 'The ripoff show',
 		points: 100,
-		description: 'Steal a bottle of wine',
+		description: 'Take a shot with the host, Geoff',
 		lat: 29.951065,
 		long: -90.071533
 		

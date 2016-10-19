@@ -15,6 +15,8 @@ module.exports = function(app,passport) {
 	// handle things like api calls
 	// authentication routes
     // sample api route
+        /* At the top, with other redirect methods before other routes */
+
 
 
     app.post('/api/challenges',function(req,res){
@@ -181,6 +183,7 @@ app.post('/login', function(req, res, next) {
     });
 
 	// frontend routes =========================================================
+
 	// route to handle all angular requests
 	app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
