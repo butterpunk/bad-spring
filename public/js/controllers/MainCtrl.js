@@ -10,6 +10,9 @@
 }])
 .controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
 	$scope.isLogged = false;
+
+	$scope.userChallenges = [];
+
 	$http.post('/verify')
 			.success(function(data){
 				console.log(data.message);
@@ -17,15 +20,17 @@
 						console.log('were in the is logged false block');
 						$scope.isLogged = false; 
 				}else{
-						console.log('were in the is logged in true block');
+						console.log('USER STUFF:', data);
 						$scope.points = data.points
 						$scope.isLogged = true;
+						$scope.userChallenges = data.challenge;
+						console.log($scope.userChallenges);
 				}
 
 			})
 			.error(function(data){
 				console.log('ARE WE IN THE VERIFY BLOCK');
-			});	
+			});		
 	//add markers here in the function to hit API
 	$scope.errormessage = '';
 	$scope.currentPage = 0;
@@ -52,7 +57,7 @@
 		 uiGmapGoogleMapApi.then(function(marker) {
 		  	console.log(marker);
 		  });
-
+		 console.log($scope.all);
     });
 
 	jQuery( document ).ready(function() {
