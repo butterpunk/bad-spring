@@ -8,7 +8,7 @@
 	        libraries: 'weather,geometry,visualization'
 	    });
 }])
-.controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http) {
+.controller('MainController', function($scope, $log, uiGmapGoogleMapApi, Nerd, $http, $analytics) {
 	$scope.isLogged = false;
 
 	$scope.userChallenges = [];
@@ -198,6 +198,7 @@ $scope.exitlogout = function(){
 				angular.element(value).toggleClass('non-strike');
 			});
 		}else if(arg == 'all' && $scope.front != 1 ){
+			$analytics.pageTrack('/all');
 			$scope.dares = $scope.all;
 			$scope.front = 1;
 		    $scope.marker = [];	
@@ -223,6 +224,7 @@ $scope.exitlogout = function(){
 	  				zoom: 13,
 	  				event: {
 						click: function(marker,eventName, model){
+						$analytics.eventTrack('MarkerClick', {category: 'Content Actions', label: 'MarkerClick'});
 						$scope.infoWindowLocation = $scope.dares[model.idKey].place;
 						$scope.infoWindowPoints = 	$scope.dares[model.idKey].points;
 						console.log($scope.dares[model.idKey].points);
